@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         options.add(new Option("compose_training", "Skomponuj plan treningowy"));
         options.add(new Option("do_training", "Rób Trening"));
         options.add(new Option("wilks", "Oblicz swój wynik Wilks"));
+        options.add(new Option("exercises", "Baza ćwiczeń"));
         options.add(new Option("about", "O aplikacji"));
     }
 }
