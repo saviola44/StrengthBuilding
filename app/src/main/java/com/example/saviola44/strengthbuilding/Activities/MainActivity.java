@@ -1,13 +1,18 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
+import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Model.Option;
+import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
 
 import java.util.ArrayList;
@@ -22,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ifFirstRun();
         createOptions();
         ListView listViewOptions = (ListView) findViewById(R.id.mainOptionLV);
-
         OptionAdapter optionAdapter = new OptionAdapter(getApplicationContext(),
                 R.layout.activity_main_row_layout, options);
         listViewOptions.setAdapter(optionAdapter);
@@ -46,5 +52,15 @@ public class MainActivity extends AppCompatActivity {
         options.add(new Option("wilks", "Oblicz swój wynik Wilks"));
         options.add(new Option("exercises", "Baza ćwiczeń"));
         options.add(new Option("about", "O aplikacji"));
+    }
+
+    private void ifFirstRun(){
+        SharedPreferences prefs = getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
+        boolean firstRun = prefs.getBoolean("firstRun", true);
+        if(firstRun){
+            Log.d("firstRun", "inside if clausule in methos ifFirstRun");
+            new ParseJSONExercises(getApplicationContext()).execute();
+            prefs.edit().putBoolean("firstRun", false).commit();
+        }
     }
 }

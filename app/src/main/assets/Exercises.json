@@ -1,0 +1,28 @@
+{
+  "muscleparts" : {
+    "chest": 1,
+    "legs": 2,
+    "back": 3,
+    "biceps": 4,
+    "triceps": 5,
+    "arms": 6
+  },
+  "exercises" : [
+    {
+      "nazwa" : "Wyciskanie na ławce poziomej",
+      "cwiczona partia" : "klatka",
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie na ławce skosie dodatnim",
+      "cwiczona partia" : "klatka",
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie na ławce skosie ujemnym",
+      "cwiczona partia" : "klatka",
+      "wielostawowe" : true
+    }
+  ]
+}
+
