@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
 import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
+import com.example.saviola44.strengthbuilding.Database.Tables.ExercisesTable;
 import com.example.saviola44.strengthbuilding.Database.Tables.MuscleParts;
+import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.Muscle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +37,27 @@ public class MusclePart  {
         return insertStatement.executeInsert();
     }
 
+    public List<Muscle> getAllMuscleParts(){
+        List<Muscle> muscles = new ArrayList<>();
+        //argumenty to kolejno nazwa tabeli
+        //kolumny ktore chcemy wyswietlic
+        //where
+        //arg dla where
+        //dalej
+        Cursor c = db.query(MuscleParts.TABLE_NAME, new String[]{MuscleParts.Id,
+                 MuscleParts.musclePart}, null, null, null, null, null, null);
+        if(c.moveToFirst()){
+            do{
+                Long id = c.getLong(0);
+                String workedMuscle = c.getString(1);
 
+                Muscle muscle = new Muscle(id,workedMuscle);
+                muscles.add(muscle);
+            }while(c.moveToNext());
+        }
+        if(!c.isClosed()){
+            c.close();
+        }
+        return muscles;
+    }
 }

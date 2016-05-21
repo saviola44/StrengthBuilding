@@ -2,7 +2,6 @@ package com.example.saviola44.strengthbuilding.Database.Tables;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
 
 /**
  * Created by saviola44 on 21.05.16.

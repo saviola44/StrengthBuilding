@@ -20,6 +20,11 @@ public class Exercise {
         return isCompound;
     }
 
+    @Override
+    public String toString() {
+        return nazwa;
+    }
+
     public Exercise(String nazwa, Long muscleParts, boolean isCompound) {
         this.nazwa = nazwa;
         this.muscleParts = muscleParts;

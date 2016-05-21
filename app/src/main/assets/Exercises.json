@@ -9,19 +9,244 @@
   },
   "exercises" : [
     {
-      "nazwa" : "Wyciskanie na ławce poziomej",
+      "nazwa" : "Wyciskanie sztangi na ławce poziomej",
       "cwiczona_partia" : 1,
       "wielostawowe" : true
     },
     {
-      "nazwa" : "Wyciskanie na ławce skosie dodatnim",
+      "nazwa" : "Wyciskanie sztangi na ławce skosie dodatnim",
       "cwiczona_partia" : 1,
       "wielostawowe" : true
     },
     {
-      "nazwa" : "Wyciskanie na ławce skosie ujemnym",
+      "nazwa" : "Wyciskanie sztangi na ławce skosie ujemnym",
       "cwiczona_partia" : 1,
       "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie hantli na ławce poziomej",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie hantli na ławce skosie dodatnim",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie hantli na ławce skosie ujemnym",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie poziomo na maszynie Smitha",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wyciskanie na skosie dodatnim na maszynie Smitha",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "pompki na poręczach z obciążeniem",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "rozpietki",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Krzyżowanie linek wyciągu w staniu",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Przenoszenie sztangielki w leżeniu w poprzek ławki poziomej",
+      "cwiczona_partia" : 1,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Przysiad ze sztanga na barkach",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Przysiad ze sztanga trzymaną z przodu",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Przysiad na suwnicy",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Wypychanie ciężaru na suwnicy",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Przysiady wykroczne",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Wykroki z hantlami",
+      "cwiczona_partia" : 2,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Podciąganie na drążku nachwytem",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Podciąganie na drążku podchwytem",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Wiosłowanie sztangą",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Martwy ciąg klasyczny",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Martwy ciąg sumo",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Martwy ciąg na prostych nogach",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Ściąganie drążka wyciągu do klatki",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Ściąganie drążka wyciągu do karku",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Wiosłowanie hantlą",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "Butterfly",
+      "cwiczona_partia" : 3,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "Uginanie ramion ze sztanga stojąc",
+      "cwiczona_partia" : 4,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "młotki",
+      "cwiczona_partia" : 4,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "uginanie ramion ze sztangą na modlitewniku",
+      "cwiczona_partia" : 4,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "uginanie hantli w oparciu o kolano",
+      "cwiczona_partia" : 4,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "uginanie hantli na modlitewniku",
+      "cwiczona_partia" : 4,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "wąskie wyciskanie na ławce",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "wyciskanie francuskie sztangi leżąc",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "wyciskanie francuskie hantli leżąc",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "wyciskanie francuskie hantli stojąc",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "wyciskanie francuskie sztangi stojąc",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "prostowanie ramion na wyciągu",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "pompki na poręczach",
+      "cwiczona_partia" : 5,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "wyciskanie żołnierksie",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "wyciskanie zza głowy",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "wyciskanie zza karku",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : true
+    },
+    {
+      "nazwa" : "podciaganie sztangi do brody",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "unoszenie sztangi w przód",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "unoszenie hantli w przód",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "unoszenie hantli na boki",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : false
+    },
+    {
+      "nazwa" : "unoszenie hantli na boki  w opadzie tułowia",
+      "cwiczona_partia" : 6,
+      "wielostawowe" : false
     }
   ]
 }

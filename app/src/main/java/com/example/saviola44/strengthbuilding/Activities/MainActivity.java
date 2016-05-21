@@ -1,6 +1,7 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
 import com.example.saviola44.strengthbuilding.Constants;
+import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
+import com.example.saviola44.strengthbuilding.Model.Exercise;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
@@ -37,9 +42,20 @@ public class MainActivity extends AppCompatActivity {
         listViewOptions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                switch(position){
+                    case 5 : {
+                        goToShowExActivity();
+                        break;
+                    }
+                }
             }
         });
+        ExerciseDAO e = new ExerciseDAO(getApplicationContext());
+        List<Exercise> lists = e.getAllElements();
+        for(int i=0; i< lists.size(); i++){
+            Exercise exercise = lists.get(i);
+            Log.d("eloooo", exercise.getNazwa() + " " + exercise.getMuscleParts()  + exercise.isCompound());
+        }
 
 
     }
@@ -62,5 +78,9 @@ public class MainActivity extends AppCompatActivity {
             new ParseJSONExercises(getApplicationContext()).execute();
             prefs.edit().putBoolean("firstRun", false).commit();
         }
+    }
+    private void goToShowExActivity(){
+        Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
+        startActivity(intent);
     }
 }
