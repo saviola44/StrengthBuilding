@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.saviola44.strengthbuilding.Constants;
+import com.example.saviola44.strengthbuilding.Database.Tables.ExercisesTable;
 import com.example.saviola44.strengthbuilding.Database.Tables.MuscleParts;
 
 /**
@@ -19,10 +20,12 @@ public class StrengthBuilderOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         MuscleParts.onCreate(db);
+        ExercisesTable.onCreate(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         MuscleParts.onUpgrade(db, oldVersion, newVersion);
+        ExercisesTable.onUpgrade(db, oldVersion, newVersion);
     }
 }

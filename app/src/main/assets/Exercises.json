@@ -10,17 +10,17 @@
   "exercises" : [
     {
       "nazwa" : "Wyciskanie na ławce poziomej",
-      "cwiczona partia" : "klatka",
+      "cwiczona_partia" : 1,
       "wielostawowe" : true
     },
     {
       "nazwa" : "Wyciskanie na ławce skosie dodatnim",
-      "cwiczona partia" : "klatka",
+      "cwiczona_partia" : 1,
       "wielostawowe" : true
     },
     {
       "nazwa" : "Wyciskanie na ławce skosie ujemnym",
-      "cwiczona partia" : "klatka",
+      "cwiczona_partia" : 1,
       "wielostawowe" : true
     }
   ]

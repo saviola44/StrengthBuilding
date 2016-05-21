@@ -6,7 +6,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Database.MusclePart;
+import com.example.saviola44.strengthbuilding.Model.Exercise;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,6 +58,8 @@ public class ParseJSONExercises extends AsyncTask<Void, Void, Void> {
             JSONObject jsonObject = new JSONObject(jsonFile);
             JSONObject muscleParts  = jsonObject.getJSONObject("muscleparts");
             parseAndCreateMusclePartsInDB(muscleParts);
+            JSONArray exercises = jsonObject.getJSONArray("exercises");
+            parseAndCreateExercisesInDB(exercises);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -71,6 +75,26 @@ public class ParseJSONExercises extends AsyncTask<Void, Void, Void> {
                 long id = jsonObject.getLong(musclePart);
                 Log.d("insert", musclePart + " " + id);
                 mp.save(id, musclePart);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(context, "Bład podczas przetwarzania pliku z Baza cwiczen", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void parseAndCreateExercisesInDB(JSONArray jsonArray){
+        ExerciseDAO exerciseDAO = new ExerciseDAO(context);
+        for(int i=0; i<jsonArray.length(); i++){
+            try {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String nazwa = jsonObject.getString("nazwa");
+                long workedMuscle = jsonObject.getLong("cwiczona_partia");
+                boolean isCompund = jsonObject.getBoolean("wielostawowe");
+                Exercise exercise = new Exercise(nazwa, workedMuscle, isCompund);
+                Log.d("insert", nazwa + " " + workedMuscle + " " + isCompund);
+                exerciseDAO.saveElement(exercise);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
