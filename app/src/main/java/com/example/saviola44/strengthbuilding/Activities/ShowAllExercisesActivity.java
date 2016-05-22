@@ -47,7 +47,7 @@ public class ShowAllExercisesActivity extends Activity {
             tmp.add(e);
             exercises.put(e.getMuscleParts(),tmp);
         }
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        expListView = (ExpandableListView) findViewById(R.id.ExpLVdatabase);
 
         listAdapter = new ExpandableExercisesListAdapter(getApplicationContext(), muscleParts, exercises);
         expListView.setAdapter(listAdapter);

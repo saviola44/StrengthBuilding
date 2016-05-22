@@ -19,38 +19,36 @@ import java.util.List;
  * Created by saviola44 on 22.05.16.
  */
 public class ExpandableExercisesListAdapter extends BaseExpandableListAdapter {
-    private Context _context;
-    private List<Muscle> _listDataHeader; // header titles
-    // child data in format of header title, child title
-    private HashMap<Long, List<Exercise>> _listDataChild;
-    public ExpandableExercisesListAdapter(Context context, List<Muscle> listDataHeader,
-                                 HashMap<Long, List<Exercise>> listChildData) {
-        this._context = context;
-        this._listDataHeader = listDataHeader;
-        this._listDataChild = listChildData;
+    private Context context;
+    private List<Muscle> muscleParts; // nagłowki dla expandable list View
+    private HashMap<Long, List<Exercise>> exercises; //podelementy ^ nagłówków
+    public ExpandableExercisesListAdapter(Context context, List<Muscle> muscleParts,
+                                 HashMap<Long, List<Exercise>> exercises) {
+        this.context = context;
+        this.muscleParts = muscleParts;
+        this.exercises = exercises;
     }
 
     @Override
     public int getGroupCount() {
-        return this._listDataHeader.size();
+        return muscleParts.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        //pobieramy wybrany element z Listy, ten element jest naszym kluczem w hashMapie
-        // i pobieramy wartosc dla dla tego klucza która jest Lista i  zwracamy jej rozmiAR
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getId())
+        //ile jest cwiczen dla danej parti miesniowej, kluczem w hashmapie jest id parti miesniowej
+        return exercises.get(muscleParts.get(groupPosition).getId())
                 .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return _listDataHeader.get(groupPosition);
+        return muscleParts.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition).getId())
+        return exercises.get(muscleParts.get(groupPosition).getId())
                 .get(childPosition);
     }
 
@@ -71,17 +69,17 @@ public class ExpandableExercisesListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        Muscle headerTitle = (Muscle) getGroup(groupPosition);
+        Muscle headerMuscle = (Muscle) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater inflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.muscle_parts_group, null);
+            convertView = inflater.inflate(R.layout.muscle_parts_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setText(headerTitle.getName());
+        TextView header = (TextView) convertView
+                .findViewById(R.id.musclePartHeaderTV);
+        header.setTypeface(null, Typeface.BOLD);
+        header.setText(headerMuscle.getName());
 
         return convertView;
     }
@@ -91,13 +89,13 @@ public class ExpandableExercisesListAdapter extends BaseExpandableListAdapter {
         final Exercise childText = (Exercise) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.exercises_row_child_layout, null);
         }
 
         TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
+                .findViewById(R.id.exerciseChildTV);
 
         txtListChild.setText(childText.getNazwa());
         return convertView;

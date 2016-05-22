@@ -24,7 +24,7 @@
     </LinearLayout>
 
     <ExpandableListView
-        android:id="@+id/lvExp"
+        android:id="@+id/ExpLVdatabase"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@color/header"/>
