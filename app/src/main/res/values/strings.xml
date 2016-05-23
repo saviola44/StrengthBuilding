@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StrengthBuilding</string>
+    <string name="title_activity_select_training_method">SelectTrainingMethodActivity</string>
 </resources>

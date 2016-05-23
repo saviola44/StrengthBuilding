@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#123</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="header">#d50D0F15</color>
+    <color name="colorPrimary">#d50D0F15</color>
+    <color name="colorPrimaryDark">#202025</color>
+    <color name="colorAccent">#D7D0AE</color>
+    <color name="header">#123</color>
+
+    <color name="navigationBarColor">#000000</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="textColorPrimary">#FFFFFF</color>
 </resources>

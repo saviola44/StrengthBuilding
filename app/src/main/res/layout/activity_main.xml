@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/header">
+        android:background="@color/colorPrimary">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,6 +20,10 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="STRENGTH BUILDING"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/header"/>
 
     </LinearLayout>
 

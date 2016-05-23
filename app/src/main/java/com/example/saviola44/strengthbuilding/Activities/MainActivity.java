@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
+                    case 2 : {
+                        goToSelectMethodActivity();
+                        break;
+                    }
                     case 5 : {
                         goToShowExActivity();
                         break;
@@ -81,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void goToShowExActivity(){
         Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
+        startActivity(intent);
+    }
+    private void goToSelectMethodActivity(){
+        Intent intent = new Intent(getApplicationContext(), SelectTrainingMethodActivity.class);
         startActivity(intent);
     }
 }
