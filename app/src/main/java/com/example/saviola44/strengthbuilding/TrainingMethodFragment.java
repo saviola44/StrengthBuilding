@@ -89,15 +89,12 @@ public class TrainingMethodFragment extends Fragment{
                             break;
                         case 1: //animal
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
-
                         case 2: //Rippetoe
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
                         case 3: //fbw na sile
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthFBW);
-
                         case 4: //PPL na sile
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthPPL);
-
                         default:
                             startActivity(intent);
                             getActivity().finish();
@@ -106,16 +103,12 @@ public class TrainingMethodFragment extends Fragment{
                 }
                 else{
                     switch (position) {
-                        case 0: //ruskich
-                            //wygeneruj trening
-                            getActivity().finish();
-                            break;
-                        case 1: //animal
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
-                            break;
-                        case 2: //Rippetoe
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
-                            break;
+                        case 0: //Split
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.Split);
+                        case 1: //FBW
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.MassFBW);
+                        case 2: //PPL
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.MassPPL);
                         default:
                             startActivity(intent);
                             getActivity().finish();
