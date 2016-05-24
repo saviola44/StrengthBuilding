@@ -79,7 +79,6 @@ public class TrainingMethodFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), AddTrainingsActivity.class);
                 if(current==strength){
                     switch (position){//treningi na sile
 
@@ -88,34 +87,33 @@ public class TrainingMethodFragment extends Fragment{
                             getActivity().finish();
                             break;
                         case 1: //animal
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
+                            goToAddTrainingActivity(Constants.TrainingFromAnimalpak);
+                            break;
                         case 2: //Rippetoe
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
+                            goToAddTrainingActivity(Constants.RippetoeTraining);
+                            break;
                         case 3: //fbw na sile
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthFBW);
+                            goToAddTrainingActivity(Constants.StrengthFBW);
+                            break;
                         case 4: //PPL na sile
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthPPL);
-                        default:
-                            startActivity(intent);
-                            getActivity().finish();
+                            goToAddTrainingActivity(Constants.StrengthPPL);
                             break;
                     }
                 }
                 else{
                     switch (position) {
                         case 0: //Split
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.Split);
+                            goToAddTrainingActivity(Constants.Split);
+                            break;
                         case 1: //FBW
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.MassFBW);
+                            goToAddTrainingActivity(Constants.MassFBW);
+                            break;
                         case 2: //PPL
-                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.MassPPL);
-                        default:
-                            startActivity(intent);
-                            getActivity().finish();
+                            goToAddTrainingActivity(Constants.MassPPL);
+                            break;
                     }
 
                 }
-
             }
         });
     }
@@ -124,5 +122,11 @@ public class TrainingMethodFragment extends Fragment{
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("current", current);
+    }
+    private void goToAddTrainingActivity(int TAG){
+        Intent intent = new Intent(getContext(), AddTrainingsActivity.class);
+        intent.putExtra(AddTrainingsActivity.TRAINING_TAG, TAG);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

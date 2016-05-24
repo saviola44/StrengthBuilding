@@ -12,8 +12,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/trainingMethodTV"
             android:padding="5dp"
-            android:textSize="24dp"
-            android:textStyle="bold"
+            android:textSize="14dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Metoda treningowa"/>
@@ -43,6 +42,7 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:id="@+id/addTrainigIV"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:src="@android:drawable/ic_input_add"/>

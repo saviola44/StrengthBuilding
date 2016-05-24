@@ -20,6 +20,14 @@ public class Training {
         exercisesSeries = new ArrayList<>();
     }
 
+    public void setTrainingLabel(String trainingLabel) {
+        this.trainingLabel = trainingLabel;
+    }
+
+    public void setTrainingDescription(String trainingDescription) {
+        this.trainingDescription = trainingDescription;
+    }
+
     public String getTrainingLabel() {
         return trainingLabel;
     }

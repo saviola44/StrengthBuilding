@@ -2,6 +2,8 @@ package com.example.saviola44.strengthbuilding.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class AddTrainingsActivity extends AppCompatActivity {
     ListView trainingsLV;
     TextView trainingMathodTV;
     TrainingMethod trainingMethod;
+    ImageView addTrainingIV;
     public static final String TRAINING_TAG = "metoda";
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,19 @@ public class AddTrainingsActivity extends AppCompatActivity {
         setTrainingMethod(TAG);
         trainingsLV = (ListView) findViewById(R.id.trainingsLV);
         trainingMathodTV = (TextView) findViewById(R.id.trainingMethodTV);
+        addTrainingIV = (ImageView) findViewById(R.id.addTrainigIV);
         if(trainingMethod!=null) {
             trainingMathodTV.setText(trainingMethod.toString());
         }
+
+        addTrainingIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
+
     private void setTrainingMethod(int TAG){
         switch (TAG){
             case Constants.TrainingFromAnimalpak:
