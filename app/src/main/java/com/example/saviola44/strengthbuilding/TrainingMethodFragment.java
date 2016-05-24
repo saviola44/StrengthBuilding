@@ -89,15 +89,18 @@ public class TrainingMethodFragment extends Fragment{
                             break;
                         case 1: //animal
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
-                            break;
+
                         case 2: //Rippetoe
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
-                            break;
                         case 3: //fbw na sile
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthFBW);
-                            break;
+
                         case 4: //PPL na sile
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthPPL);
+
+                        default:
+                            startActivity(intent);
+                            getActivity().finish();
                             break;
                     }
                 }
@@ -113,10 +116,12 @@ public class TrainingMethodFragment extends Fragment{
                         case 2: //Rippetoe
                             intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
                             break;
+                        default:
+                            startActivity(intent);
+                            getActivity().finish();
                     }
+
                 }
-                startActivity(intent);
-                getActivity().finish();
 
             }
         });
