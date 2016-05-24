@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".Activities.ShowAllExercisesActivity" />
         <activity android:name=".Activities.SelectTrainingMethodActivity" />
+        <activity android:name=".Activities.AddTrainingActivity"/>
     </application>
 
 </manifest>

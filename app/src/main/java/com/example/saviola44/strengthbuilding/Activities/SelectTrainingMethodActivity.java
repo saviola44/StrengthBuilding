@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.saviola44.strengthbuilding.Adapters.ViewPagerAdapter;
 import com.example.saviola44.strengthbuilding.R;
+import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 import com.example.saviola44.strengthbuilding.TrainingMethodFragment;
 
 /**
@@ -29,9 +30,16 @@ public class SelectTrainingMethodActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new TrainingMethodFragment(), "Treningi na siłe");
-        adapter.addFragment(new TrainingMethodFragment(), "Treningi na mase");
-        adapter.addFragment(new TrainingMethodFragment(), "Własny");
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance();
+        TrainingMethodFragment fragm1 = new TrainingMethodFragment();
+        fragm1.setMethod(TrainingMethodFragment.strength);
+        TrainingMethodFragment fragm2 = new TrainingMethodFragment();
+        fragm2.setMethod(TrainingMethodFragment.mass);
+        TrainingMethodFragment fragm3 = new TrainingMethodFragment();
+        fragm3.setMethod(TrainingMethodFragment.custom);
+        adapter.addFragment(fragm1, "Treningi na siłe");
+        adapter.addFragment(fragm2, "Treningi na mase");
+        adapter.addFragment(fragm3, "Własny");
         viewPager.setAdapter(adapter);
     }
 }
