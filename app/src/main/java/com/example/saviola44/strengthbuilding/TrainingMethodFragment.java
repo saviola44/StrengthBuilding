@@ -14,7 +14,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Switch;
 
-import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
+
+import com.example.saviola44.strengthbuilding.Activities.AddTrainingsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,23 +79,44 @@ public class TrainingMethodFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), AddTrainingsActivity.class);
                 if(current==strength){
-                    switch (position){
-                        case 0:
+                    switch (position){//treningi na sile
+
+                        case 0: //ruskich
                             //wygeneruj trening
                             getActivity().finish();
                             break;
-                        default:
-                            Intent intent = new Intent(getContext(), AddTrainingActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
+                        case 1: //animal
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
+                            break;
+                        case 2: //Rippetoe
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
+                            break;
+                        case 3: //fbw na sile
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthFBW);
+                            break;
+                        case 4: //PPL na sile
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.StrengthPPL);
+                            break;
                     }
                 }
                 else{
-                    Intent intent = new Intent(getContext(), AddTrainingActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    switch (position) {
+                        case 0: //ruskich
+                            //wygeneruj trening
+                            getActivity().finish();
+                            break;
+                        case 1: //animal
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.TrainingFromAnimalpak);
+                            break;
+                        case 2: //Rippetoe
+                            intent.putExtra(AddTrainingsActivity.TRAINING_TAG, Constants.RippetoeTraining);
+                            break;
+                    }
                 }
+                startActivity(intent);
+                getActivity().finish();
 
             }
         });

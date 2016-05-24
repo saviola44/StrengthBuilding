@@ -51,15 +51,17 @@ public class ExerciseDAO implements DAO<Exercise> {
         //where
         //arg dla where
         //dalej
-        Cursor c = db.query(ExercisesTable.TABLE_NAME, new String[]{ExercisesTable.exerciseName,
+        Cursor c = db.query(ExercisesTable.TABLE_NAME, new String[]{ExercisesTable.Id, ExercisesTable.exerciseName,
                 ExercisesTable.muscleWorked, ExercisesTable.isCompound}, null, null, null, null, null, null);
         if(c.moveToFirst()){
             do{
-                String name = c.getString(0);
-                String workedMuscle = c.getString(1);
-                String isCompound = c.getString(2);
-                Exercise exercise = new Exercise(name, Long.parseLong(workedMuscle), Boolean.parseBoolean(isCompound));
+                long id = c.getLong(0);
+                String name = c.getString(1);
+                String workedMuscle = c.getString(2);
+                String isCompound = c.getString(3);
+                Exercise exercise = new Exercise(id, name, Long.parseLong(workedMuscle), Boolean.parseBoolean(isCompound));
                 exercises.add(exercise);
+
             }while(c.moveToNext());
         }
         if(!c.isClosed()){
