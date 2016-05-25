@@ -1,8 +1,10 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -25,12 +27,17 @@ public class ShowAllExercisesActivity extends Activity {
     ExpandableListAdapter listAdapter;
     List<Muscle> muscleParts;
     HashMap<Long, List<Exercise>> exercises;
+    public static final int returnExAfterClickTAG = 1;
+    public static final int showExAfterClickTAG = 2;
+
+    int currentTag;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_all_exercises_layout);
-        MusclePart musclePart = new MusclePart(getApplicationContext());
+        currentTag = getIntent().getIntExtra("TAG", showExAfterClickTAG);
+        final MusclePart musclePart = new MusclePart(getApplicationContext());
         ExerciseDAO exerciseDAO = new ExerciseDAO(getApplicationContext());
         muscleParts = musclePart.getAllMuscleParts();
         exercises = new HashMap<>();
@@ -51,5 +58,19 @@ public class ShowAllExercisesActivity extends Activity {
 
         listAdapter = new ExpandableExercisesListAdapter(getApplicationContext(), muscleParts, exercises);
         expListView.setAdapter(listAdapter);
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                if(currentTag == returnExAfterClickTAG) {
+                    Muscle m = muscleParts.get(groupPosition);
+                    Exercise e = exercises.get(m.getId()).get(childPosition);
+                    Intent result = new Intent();
+                    result.putExtra("exercise", e);
+                    setResult(Activity.RESULT_OK, result);
+                    finish();
+                }
+                return false;
+            }
+        });
     }
 }
