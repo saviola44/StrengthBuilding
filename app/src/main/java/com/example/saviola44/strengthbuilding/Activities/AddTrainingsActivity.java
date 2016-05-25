@@ -1,5 +1,6 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,10 +74,9 @@ public class AddTrainingsActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Training t = trainings.get(position);
-                t.getExercises().add(new Exercise("WL", 1L, true));
                 Intent intent = new Intent(getApplicationContext(), AddTrainingActivity.class);
                 intent.putExtra("training", t);
-                startActivity(intent);
+                startActivityForResult(intent, position);
             }
         });
     }
@@ -113,5 +113,13 @@ public class AddTrainingsActivity extends AppCompatActivity
     public void addTraining(Training t) {
         trainings.add(t);
         //adapter.addtraining(t);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == Activity.RESULT_OK){
+            Training t = data.getParcelableExtra("training");
+            trainings.set(requestCode, t);
+        }
     }
 }
