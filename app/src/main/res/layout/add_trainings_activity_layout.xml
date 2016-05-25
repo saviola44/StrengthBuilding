@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/header"
         android:orientation="vertical"
         android:background="@color/colorPrimary">
         <TextView
@@ -23,20 +23,17 @@
             android:background="@color/header"/>
 
     </LinearLayout>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/trainingsLV">
 
-    </ListView>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_gravity="right"
+        android:id="@+id/footer"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
             android:textSize="24dp"
             android:text="Dodaj kolejny Trening"
             android:gravity="center"/>
@@ -49,5 +46,13 @@
             android:src="@android:drawable/ic_input_add"/>
 
     </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_above="@id/footer"
+        android:id="@+id/trainingsLV">
 
-</LinearLayout>
+    </ListView>
+
+</RelativeLayout>
