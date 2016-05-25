@@ -1,11 +1,13 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
 import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
+import com.example.saviola44.strengthbuilding.Model.Exercise;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.Training;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
@@ -63,8 +66,17 @@ public class AddTrainingsActivity extends AppCompatActivity
         addTrainingIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 addNewTrainingDialog.show(getSupportFragmentManager(), "createTrainingTAG");
+            }
+        });
+        trainingsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Training t = trainings.get(position);
+                t.getExercises().add(new Exercise("WL", 1L, true));
+                Intent intent = new Intent(getApplicationContext(), AddTrainingActivity.class);
+                intent.putExtra("training", t);
+                startActivity(intent);
             }
         });
     }
