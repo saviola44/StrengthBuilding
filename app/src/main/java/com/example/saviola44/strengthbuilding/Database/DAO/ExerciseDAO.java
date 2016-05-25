@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 
 import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
 import com.example.saviola44.strengthbuilding.Database.Tables.ExercisesTable;
-import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by saviola44 on 21.05.16.
  */
-public class ExerciseDAO implements DAO<Exercise> {
+public class ExerciseDAO implements DAO<ExerciseInfo> {
     public static final String INSERT = "insert into " + ExercisesTable.TABLE_NAME
             + " (" + ExercisesTable.exerciseName + ", " +
             ExercisesTable.muscleWorked + ", " + ExercisesTable.isCompound +  ")"  + " values (?,?,?)";
@@ -28,7 +28,7 @@ public class ExerciseDAO implements DAO<Exercise> {
         insertStatement = db.compileStatement(INSERT);
     }
     @Override
-    public long saveElement(Exercise element) {
+    public long saveElement(ExerciseInfo element) {
         insertStatement.clearBindings();
         insertStatement.bindString(1, element.getNazwa());
         insertStatement.bindLong(2, element.getMuscleParts());
@@ -39,13 +39,13 @@ public class ExerciseDAO implements DAO<Exercise> {
     }
 
     @Override
-    public void delete(Exercise element) {
+    public void delete(ExerciseInfo element) {
 
     }
 
     @Override
-    public List<Exercise> getAllElements() {
-        List<Exercise> exercises = new ArrayList<>();
+    public List<ExerciseInfo> getAllElements() {
+        List<ExerciseInfo> exercises = new ArrayList<>();
         //argumenty to kolejno nazwa tabeli
         //kolumny ktore chcemy wyswietlic
         //where
@@ -57,9 +57,10 @@ public class ExerciseDAO implements DAO<Exercise> {
             do{
                 long id = c.getLong(0);
                 String name = c.getString(1);
-                String workedMuscle = c.getString(2);
-                String isCompound = c.getString(3);
-                Exercise exercise = new Exercise(id, name, Long.parseLong(workedMuscle), Boolean.parseBoolean(isCompound));
+                long workedMuscle = c.getLong(2);
+                long isCompoundLong = c.getLong(3);
+                boolean isCompound = (isCompoundLong==1L);
+                ExerciseInfo exercise = new ExerciseInfo(id, name, workedMuscle, isCompound);
                 exercises.add(exercise);
 
             }while(c.moveToNext());

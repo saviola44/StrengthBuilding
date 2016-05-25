@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by saviola44 on 21.05.16.
  */
-public class Exercise implements Parcelable {
+public class ExerciseInfo implements Parcelable {
     long id;
     String nazwa;
     Long muscleParts;
@@ -29,36 +29,36 @@ public class Exercise implements Parcelable {
         return nazwa;
     }
 
-    public Exercise(long id, String nazwa, Long muscleParts, boolean isCompound) {
+    public ExerciseInfo(long id, String nazwa, Long muscleParts, boolean isCompound) {
         this.id = id;
         this.nazwa = nazwa;
         this.muscleParts = muscleParts;
         this.isCompound = isCompound;
     }
 
-    public Exercise(String nazwa, Long muscleParts, boolean isCompound) {
+    public ExerciseInfo(String nazwa, Long muscleParts, boolean isCompound) {
         id=0;
         this.nazwa = nazwa;
         this.muscleParts = muscleParts;
         this.isCompound = isCompound;
     }
 
-    protected Exercise(Parcel in){
+    protected ExerciseInfo(Parcel in){
         id = in.readLong();
         nazwa = in.readString();
         muscleParts = in.readLong();
         isCompound = in.readByte() != 0;
     }
 
-    public static final Creator<Exercise> CREATOR = new Creator<Exercise>() {
+    public static final Creator<ExerciseInfo> CREATOR = new Creator<ExerciseInfo>() {
         @Override
-        public Exercise createFromParcel(Parcel in) {
-            return new Exercise(in);
+        public ExerciseInfo createFromParcel(Parcel in) {
+            return new ExerciseInfo(in);
         }
 
         @Override
-        public Exercise[] newArray(int size) {
-            return new Exercise[size];
+        public ExerciseInfo[] newArray(int size) {
+            return new ExerciseInfo[size];
         }
     };
     public long getId() {

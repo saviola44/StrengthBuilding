@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
 import com.example.saviola44.strengthbuilding.R;
 
@@ -21,9 +21,9 @@ import java.util.List;
 public class ExpandableExercisesListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<Muscle> muscleParts; // nagłowki dla expandable list View
-    private HashMap<Long, List<Exercise>> exercises; //podelementy ^ nagłówków
+    private HashMap<Long, List<ExerciseInfo>> exercises; //podelementy ^ nagłówków
     public ExpandableExercisesListAdapter(Context context, List<Muscle> muscleParts,
-                                 HashMap<Long, List<Exercise>> exercises) {
+                                 HashMap<Long, List<ExerciseInfo>> exercises) {
         this.context = context;
         this.muscleParts = muscleParts;
         this.exercises = exercises;
@@ -86,7 +86,7 @@ public class ExpandableExercisesListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final Exercise childText = (Exercise) getChild(groupPosition, childPosition);
+        final ExerciseInfo childText = (ExerciseInfo) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context

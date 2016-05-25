@@ -5,4 +5,5 @@ package com.example.saviola44.strengthbuilding.TrainingMethods;
  */
 public interface TrainingMethod {
     int getTrainingTag();
+    int askAboutTAG();
 }

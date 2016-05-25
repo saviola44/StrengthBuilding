@@ -3,9 +3,9 @@ package com.example.saviola44.strengthbuilding;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
+import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class Training implements Parcelable{
     String trainingLabel;
     String trainingDescription;
-    ArrayList<Exercise> exercises;
+    ArrayList<WorkoutExerciseInfo> exercises;
     ArrayList<Integer> exercisesSeries;
 
     public Training() {
@@ -26,7 +26,7 @@ public class Training implements Parcelable{
     protected Training(Parcel in){
         trainingLabel = in.readString();
         trainingDescription = in.readString();
-        exercises = in.createTypedArrayList(Exercise.CREATOR);
+        exercises =  in.createTypedArrayList(WorkoutExerciseInfo.CREATOR);
         exercisesSeries = (ArrayList<Integer>) in.readSerializable();
     }
 
@@ -58,7 +58,7 @@ public class Training implements Parcelable{
         return trainingDescription;
     }
 
-    public List<Exercise> getExercises() {
+    public List<WorkoutExerciseInfo> getExercises() {
         return exercises;
     }
 

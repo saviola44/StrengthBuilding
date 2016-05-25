@@ -9,13 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
-import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
@@ -55,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ExerciseDAO e = new ExerciseDAO(getApplicationContext());
-        List<Exercise> lists = e.getAllElements();
+        List<ExerciseInfo> lists = e.getAllElements();
         for(int i=0; i< lists.size(); i++){
-            Exercise exercise = lists.get(i);
+            ExerciseInfo exercise = lists.get(i);
             Log.d("eloooo", exercise.getNazwa() + " " + exercise.getMuscleParts()  + exercise.isCompound());
         }
 

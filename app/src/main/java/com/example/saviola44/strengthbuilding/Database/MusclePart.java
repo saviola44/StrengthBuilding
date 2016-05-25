@@ -6,10 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
-import com.example.saviola44.strengthbuilding.Database.Tables.ExercisesTable;
 import com.example.saviola44.strengthbuilding.Database.Tables.MuscleParts;
-import com.example.saviola44.strengthbuilding.Model.Exercise;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
 
 import java.util.ArrayList;

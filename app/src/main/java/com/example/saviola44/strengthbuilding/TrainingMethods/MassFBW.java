@@ -1,5 +1,7 @@
 package com.example.saviola44.strengthbuilding.TrainingMethods;
 
+import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
+import com.example.saviola44.strengthbuilding.Activities.ShowAllExercisesActivity;
 import com.example.saviola44.strengthbuilding.Constants;
 
 /**
@@ -12,6 +14,12 @@ public class MassFBW extends FBW {
     public int getTrainingTag() {
         return TAG;
     }
+
+    @Override
+    public int askAboutTAG() {
+        return ShowAllExercisesActivity.askMaxWeightAfterClickTAG;
+    }
+
 
     @Override
     public String toString() {

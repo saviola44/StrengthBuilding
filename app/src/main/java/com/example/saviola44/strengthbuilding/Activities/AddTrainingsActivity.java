@@ -1,24 +1,18 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
 import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
-import com.example.saviola44.strengthbuilding.Model.Exercise;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.Training;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
@@ -40,12 +34,13 @@ import java.util.List;
 public class AddTrainingsActivity extends AppCompatActivity
         implements AddNewTrainingDialog.AddTrainingInterface {
     private AddNewTrainingDialog addNewTrainingDialog = new AddNewTrainingDialog();
+
     List<Training> trainings;
-    AddedTrainingsAdapter adapter;
-    ListView trainingsLV;
+    AddedTrainingsAdapter adapter; //adapter dla ponizszej listy
+    ListView trainingsLV; //wyswietla liste treningow
     TextView trainingMathodTV;
-    TrainingMethod trainingMethod;
-    ImageView addTrainingIV;
+    TrainingMethod trainingMethod; //wybrana metoda treningowa - przesylana w intencji
+    ImageView addTrainingIV; //przycisk dodawania treninfu w postaci obrazka
     public static final String TRAINING_TAG = "metoda";
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +71,7 @@ public class AddTrainingsActivity extends AppCompatActivity
                 Training t = trainings.get(position);
                 Intent intent = new Intent(getApplicationContext(), AddTrainingActivity.class);
                 intent.putExtra("training", t);
+                intent.putExtra("mode", trainingMethod.askAboutTAG());
                 startActivityForResult(intent, position);
             }
         });

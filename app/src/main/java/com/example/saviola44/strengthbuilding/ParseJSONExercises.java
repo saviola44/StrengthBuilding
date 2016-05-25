@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Database.MusclePart;
-import com.example.saviola44.strengthbuilding.Model.Exercise;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,7 +91,7 @@ public class ParseJSONExercises extends AsyncTask<Void, Void, Void> {
                 String nazwa = jsonObject.getString("nazwa");
                 long workedMuscle = jsonObject.getLong("cwiczona_partia");
                 boolean isCompund = jsonObject.getBoolean("wielostawowe");
-                Exercise exercise = new Exercise(nazwa, workedMuscle, isCompund);
+                ExerciseInfo exercise = new ExerciseInfo(nazwa, workedMuscle, isCompund);
                 Log.d("insert", nazwa + " " + workedMuscle + " " + isCompund);
                 exerciseDAO.saveElement(exercise);
 
