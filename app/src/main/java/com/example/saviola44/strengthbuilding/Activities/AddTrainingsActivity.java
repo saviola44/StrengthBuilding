@@ -1,14 +1,22 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
+import android.app.DialogFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
+import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.R;
+import com.example.saviola44.strengthbuilding.Training;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.RippetoeTraining;
@@ -19,10 +27,17 @@ import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by saviola44 on 24.05.16.
  */
-public class AddTrainingsActivity extends AppCompatActivity {
+public class AddTrainingsActivity extends AppCompatActivity
+        implements AddNewTrainingDialog.AddTrainingInterface {
+    private AddNewTrainingDialog addNewTrainingDialog = new AddNewTrainingDialog();
+    List<Training> trainings;
+    AddedTrainingsAdapter adapter;
     ListView trainingsLV;
     TextView trainingMathodTV;
     TrainingMethod trainingMethod;
@@ -37,6 +52,10 @@ public class AddTrainingsActivity extends AppCompatActivity {
         trainingsLV = (ListView) findViewById(R.id.trainingsLV);
         trainingMathodTV = (TextView) findViewById(R.id.trainingMethodTV);
         addTrainingIV = (ImageView) findViewById(R.id.addTrainigIV);
+        trainings = new ArrayList<>();
+        adapter = new AddedTrainingsAdapter(getApplicationContext(),
+                R.layout.added_trainings_row_layout, trainings);
+        trainingsLV.setAdapter(adapter);
         if(trainingMethod!=null) {
             trainingMathodTV.setText(trainingMethod.toString());
         }
@@ -45,6 +64,7 @@ public class AddTrainingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                addNewTrainingDialog.show(getSupportFragmentManager(), "createTrainingTAG");
             }
         });
     }
@@ -75,5 +95,11 @@ public class AddTrainingsActivity extends AppCompatActivity {
             case Constants.StrengthPPL:
                 trainingMethod = new StrengthPPL();
         }
+    }
+
+    @Override
+    public void addTraining(Training t) {
+        trainings.add(t);
+        //adapter.addtraining(t);
     }
 }

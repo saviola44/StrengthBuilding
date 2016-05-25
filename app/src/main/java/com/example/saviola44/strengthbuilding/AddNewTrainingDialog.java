@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by saviola44 on 25.05.16.
@@ -16,6 +17,12 @@ import android.widget.EditText;
 public class AddNewTrainingDialog extends DialogFragment {
     EditText trainingNameET;
     EditText trainingDescET;
+    AddTrainingInterface handler;
+    public interface AddTrainingInterface{
+        void addTraining(Training t);
+    }
+
+
 
     @NonNull
     @Override
@@ -42,6 +49,8 @@ public class AddNewTrainingDialog extends DialogFragment {
                                 else {
                                     training.setTrainingDescription("Brak opisu");
                                 }
+                                handler = (AddTrainingInterface) getActivity();
+                                handler.addTraining(training);
                             }
 
                         }else{

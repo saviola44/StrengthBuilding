@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/trainingNameTV"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Nazwa treningu"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/trainingDescTV"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/trainingNameTV"
+        android:textSize="14dp"
+        android:text="opis treningu"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_below="@id/trainingDescTV"
+        android:background="#881C0000"/>
+</RelativeLayout>
