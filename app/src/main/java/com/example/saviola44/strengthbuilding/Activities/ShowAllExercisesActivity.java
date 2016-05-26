@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.ExpandableExercisesListAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
@@ -16,7 +15,7 @@ import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.SetMaxWeightDialog;
+import com.example.saviola44.strengthbuilding.Dialogs.SetMaxWeightDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;

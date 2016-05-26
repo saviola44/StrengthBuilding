@@ -20,7 +20,8 @@
         <activity android:name=".Activities.AddTrainingsActivity"
             android:screenOrientation="userPortrait"/>
         <activity android:name=".Activities.AddTrainingActivity" />
-        <activity android:name=".Activities.DoTrainingActivity" />
+        <activity android:name=".Activities.DoTrainingActivity"
+            android:screenOrientation="userPortrait"/>
     </application>
 
 </manifest>

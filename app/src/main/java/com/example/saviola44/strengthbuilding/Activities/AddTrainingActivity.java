@@ -10,16 +10,10 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
-import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.SetMaxWeightDialog;
 import com.example.saviola44.strengthbuilding.Training;
-
-import java.util.List;
 
 /**
  * Created by saviola44 on 24.05.16.

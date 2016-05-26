@@ -1,4 +1,4 @@
-package com.example.saviola44.strengthbuilding;
+package com.example.saviola44.strengthbuilding.Dialogs;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
+import com.example.saviola44.strengthbuilding.R;
 
 /**
  * Created by saviola44 on 25.05.16.

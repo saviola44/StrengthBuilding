@@ -1,4 +1,4 @@
-package com.example.saviola44.strengthbuilding;
+package com.example.saviola44.strengthbuilding.Dialogs;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.saviola44.strengthbuilding.R;
+import com.example.saviola44.strengthbuilding.Training;
 
 /**
  * Created by saviola44 on 25.05.16.
@@ -55,7 +58,7 @@ public class AddNewTrainingDialog extends DialogFragment {
 
                         }else{
                             //Toast.makeText(getContext(), "edittext jest nulem", Toast.LENGTH_LONG).show();
-                            Log.d("dialog", "nie znaleziono widoku edit text playlist_name");
+                            Log.d("dialog", "nie znaleziono widokow edit text");
                         }
                     }
                 })

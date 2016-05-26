@@ -7,6 +7,7 @@ public class WorkoutExercise {
     ExerciseInfo exercise;
     int weight;
     int reps;
+    String comment;
 
     public WorkoutExercise(ExerciseInfo exercise) {
         this.exercise = exercise;
@@ -30,5 +31,13 @@ public class WorkoutExercise {
 
     public void setReps(int reps) {
         this.reps = reps;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

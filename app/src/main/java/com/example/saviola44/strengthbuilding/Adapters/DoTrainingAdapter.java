@@ -1,14 +1,21 @@
 package com.example.saviola44.strengthbuilding.Adapters;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.saviola44.strengthbuilding.Activities.DoTrainingActivity;
+import com.example.saviola44.strengthbuilding.Dialogs.AddNewTrainingDialog;
+import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.R;
@@ -22,13 +29,12 @@ import java.util.List;
 public class DoTrainingAdapter extends ArrayAdapter {
     List<WorkoutExercise> exercises;
     List<Boolean> doneEx;
-    public DoTrainingAdapter(Context context, int resource, List<WorkoutExercise> exercises) {
+    Context context;
+    public DoTrainingAdapter(Context context, int resource, List<WorkoutExercise> exercises,  List<Boolean> doneEx) {
         super(context, resource);
+        this.context = context;
         this.exercises = exercises;
-        doneEx = new ArrayList<>();
-        for(int i=0; i<exercises.size(); i++){
-            doneEx.add(false);
-        }
+        this.doneEx = doneEx;
     }
 
     public void setDoneEx(int position){
@@ -39,7 +45,7 @@ public class DoTrainingAdapter extends ArrayAdapter {
         exercises.add(we);
     }
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         View row = convertView;
 
         DataHandler handler;
@@ -48,12 +54,30 @@ public class DoTrainingAdapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.do_training_row_layout, parent, false);
         if(doneEx.get(position)){
             row.setBackgroundColor(Color.rgb(56, 175, 68));
+
         }
             handler = new DataHandler();
             handler.nameTV = (TextView) row.findViewById(R.id.doTrainingExNameTV);
             handler.repWeightTV = (TextView) row.findViewById(R.id.doTrainingExTV);
             handler.editIV = (ImageView) row.findViewById(R.id.editWorkoutIV);
-            handler.acceptIV = (ImageView) row.findViewById(R.id.acceptWorkoutIV);
+
+            handler.editIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(convertView.getContext(), "bedzie", Toast.LENGTH_LONG).show();
+                    EditSeriesDialog dialog = new EditSeriesDialog();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("pos", position);
+                    bundle.putDouble("weight", (double)exercises.get(position).getWeight());
+                    bundle.putInt("reps", exercises.get(position).getReps());
+                    if(exercises.get(position).getComment()!=null){
+                        bundle.putString("comment", exercises.get(position).getComment());
+                    }
+                    dialog.setArguments(bundle);
+                    dialog.show(((AppCompatActivity)context).getFragmentManager(), "Edytuj Serię");
+                }
+            });
+
             row.setTag(handler);
        // }
         //else{
@@ -81,6 +105,5 @@ public class DoTrainingAdapter extends ArrayAdapter {
         TextView nameTV;
         TextView repWeightTV;
         ImageView editIV;
-        ImageView acceptIV;
     }
 }

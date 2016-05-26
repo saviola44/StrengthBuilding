@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.DoTrainingAdapter;
+import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
@@ -26,7 +27,7 @@ import java.util.List;
 /**
  * Created by saviola44 on 26.05.16.
  */
-public class DoTrainingActivity extends AppCompatActivity {
+public class DoTrainingActivity extends AppCompatActivity implements EditSeriesDialog.EditSeries{
     ListView exercisesLV;
     List<WorkoutExercise> exercises;
     List<Boolean> doneEx;
@@ -50,13 +51,12 @@ public class DoTrainingActivity extends AppCompatActivity {
         for(int i=0; i<exercises.size(); i++){
             doneEx.add(false);
         }
-        adapter = new DoTrainingAdapter(getApplicationContext(), R.layout.added_trainings_row_layout,
-                exercises);
+        adapter = new DoTrainingAdapter(this, R.layout.added_trainings_row_layout,
+                exercises, doneEx);
         exercisesLV.setAdapter(adapter);
         exercisesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("elo", "position= " + position);
                 //view.setBackgroundColor(Color.rgb(56,175,68));
                 doneEx.set(position, true);
                 adapter.setDoneEx(position);
@@ -92,5 +92,27 @@ public class DoTrainingActivity extends AppCompatActivity {
             adapter.addExercise(we);
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void editReps(int pos, int reps) {
+        exercises.get(pos).setReps(reps);
+    }
+
+    @Override
+    public void editWeight(int pos, double weight) {
+        exercises.get(pos).setWeight((int)weight);
+    }
+
+    @Override
+    public void editComment(int pos, String comment) {
+        exercises.get(pos).setComment(comment);
+    }
+
+    @Override
+    public void deleteSeries(int pos) {
+        doneEx.remove(pos);
+        exercises.remove(pos);
+        adapter.notifyDataSetChanged();
     }
 }

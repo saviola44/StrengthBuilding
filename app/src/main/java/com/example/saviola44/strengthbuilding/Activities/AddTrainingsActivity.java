@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
-import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
+import com.example.saviola44.strengthbuilding.Dialogs.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
