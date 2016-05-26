@@ -30,7 +30,7 @@ public class SelectTrainingMethodActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        StrengthBuilderApp app = StrengthBuilderApp.getInstance();
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
         TrainingMethodFragment fragm1 = new TrainingMethodFragment();
         fragm1.setMethod(TrainingMethodFragment.strength);
         TrainingMethodFragment fragm2 = new TrainingMethodFragment();

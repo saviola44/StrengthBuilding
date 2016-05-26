@@ -12,5 +12,5 @@ public interface TrainingMethod {
     int getTrainingTag();
     int askAboutTAG();
     int nbOfSeriesForStrengthEx();
-    List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan);
+    List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan,int trainingNb);
 }

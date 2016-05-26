@@ -106,10 +106,9 @@ public class AddTrainingsActivity extends AppCompatActivity
                     TrainingPlan plan = new TrainingPlan();
                     plan.setTrainingMethod(trainingMethod);
                     plan.setTrainings(trainings);
-                    StrengthBuilderApp app = StrengthBuilderApp.getInstance();
-                    app.saveTrainingPlan(plan);
+                    StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
+                    app.saveTrainingPlan(plan, getApplicationContext());
                     finish();
-
                 }
             }
         });

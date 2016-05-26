@@ -8,6 +8,8 @@ public class Constants {
     public static final int DATABASE_VERSION = 1;
     public static final String SHARED_PREFS = "StrengthBuilderPrefs";
 
+    public static String IS_PLAN_CREATED = "isPlanCreated";
+
     public static final int RussianPowerliftingTraining = 0;
     public static final int TrainingFromAnimalpak = 1;
     public static final int RippetoeTraining = 2;

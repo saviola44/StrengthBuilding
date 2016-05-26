@@ -43,7 +43,7 @@ public class DoTrainingActivity extends AppCompatActivity {
         addExButton = (Button) findViewById(R.id.addExerciseButton);
         endTrainingButton = (Button) findViewById(R.id.endTraingButton);
 
-        app = StrengthBuilderApp.getInstance();
+        app = StrengthBuilderApp.getInstance(getApplicationContext());
         trainingPlan = app.getPlan();
         exercises = app.getNextTraining();
         doneEx = new ArrayList<>();
@@ -76,6 +76,7 @@ public class DoTrainingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //zapisz trening w historii
+                StrengthBuilderApp.getInstance(getApplicationContext()).finishCurrentTraining();
                 finish();
             }
         });

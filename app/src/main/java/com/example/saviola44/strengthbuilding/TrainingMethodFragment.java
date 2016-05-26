@@ -60,7 +60,7 @@ public class TrainingMethodFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         listView = (ListView) getView().findViewById(R.id.selectMethodLV);
-        StrengthBuilderApp app = StrengthBuilderApp.getInstance();
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance(getContext());
         switch (current){
             case strength:
                 trainingMethods = app.getStrengthTrainings();

@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Funkcjonalnosc jeszcze nie dodana", Toast.LENGTH_LONG).show();
     }
     public void goToDoTrainingActivity(){
-        StrengthBuilderApp app = StrengthBuilderApp.getInstance().getInstance();
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
         if(app.getPlan()!=null){
             Intent intent = new Intent(getApplicationContext(), DoTrainingActivity.class);
             startActivity(intent);

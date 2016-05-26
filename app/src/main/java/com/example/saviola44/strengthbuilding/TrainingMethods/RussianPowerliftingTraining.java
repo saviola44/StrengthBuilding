@@ -31,7 +31,7 @@ public class RussianPowerliftingTraining implements TrainingMethod {
     }
 
     @Override
-    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan) {
+    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan,int trainingNb) {
         return null;
     }
 

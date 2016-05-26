@@ -1,6 +1,7 @@
 package com.example.saviola44.strengthbuilding.TrainingMethods;
 
 import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
+import com.example.saviola44.strengthbuilding.Activities.MainActivity;
 import com.example.saviola44.strengthbuilding.Activities.ShowAllExercisesActivity;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
@@ -48,8 +49,7 @@ public class StrengthAnimalpakTraining implements TrainingMethod {
     }
 
     @Override
-    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan) {
-        int trainingNb = StrengthBuilderApp.getInstance().getCurrentTraining();
+    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan, int trainingNb) {
         List<Training> trainings = plan.getTrainings();
         //np 4treningi size=4
         //np cur = 5 done = 0,1,2,3,4

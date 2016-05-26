@@ -3,9 +3,21 @@ package com.example.saviola44.strengthbuilding;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Switch;
+import android.widget.Toast;
 
+import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
+import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
+import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
+import com.example.saviola44.strengthbuilding.TrainingMethods.MassPPL;
+import com.example.saviola44.strengthbuilding.TrainingMethods.RippetoeTraining;
+import com.example.saviola44.strengthbuilding.TrainingMethods.RussianPowerliftingTraining;
+import com.example.saviola44.strengthbuilding.TrainingMethods.Split;
+import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthAnimalpakTraining;
+import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthFBW;
+import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
 import org.json.JSONArray;
@@ -45,12 +57,12 @@ public class StrengthBuilderApp {
         return plan;
     }
 
-    public static void createStrengthBuilderApp(){
+    public static void createStrengthBuilderApp(Context context){
         app = new StrengthBuilderApp();
-        //odczytaj plan
-        //todoo
         app.initializeStrengthTrainings();
         app.initializeMassTrainings();
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
+        prefs.getBoolean(Constants.IS_PLAN_CREATED, false);
     }
 
     private void initializeStrengthTrainings(){
@@ -69,12 +81,12 @@ public class StrengthBuilderApp {
         massTrainings.add("PPL");
     }
 
-    public static StrengthBuilderApp getInstance(){
+    public static StrengthBuilderApp getInstance(Context context){
         if(app!=null){
             return app;
         }
         else{
-            createStrengthBuilderApp();
+            createStrengthBuilderApp(context);
             return app;
         }
     }
@@ -87,15 +99,15 @@ public class StrengthBuilderApp {
         return massTrainings;
     }
 
-    public void saveTrainingPlan(TrainingPlan plan){
-        //zapisz w bazie danych
+    public void saveTrainingPlan(TrainingPlan plan,Context context){
         currentTraining = 0;
         this.plan = plan;
+        saveTrainingPlan(context);
     }
 
     public List<WorkoutExercise> getNextTraining(){
         if (plan!=null){
-            return plan.getTrainingMethod().getWorkoutExercises(plan);
+            return plan.getTrainingMethod().getWorkoutExercises(plan, currentTraining);
         }
         return null;
     }
@@ -103,34 +115,107 @@ public class StrengthBuilderApp {
         return currentTraining;
     }
 
-    public void setCurrentTraining(int currentTraining) {
-        this.currentTraining = currentTraining;
+    public void finishCurrentTraining() {
+        currentTraining++;
     }
 
     public void saveTrainingPlan(Context context){
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
         currentTraining = 0;
-        prefs.edit().putInt("currentTraining", currentTraining);
-        prefs.edit().putInt("method", plan.getTrainingMethod().getTrainingTag());
-        JSONObject trainingsObj = new JSONObject();
+        JSONObject trainingPlanObj = new JSONObject();
         try {
-
+            trainingPlanObj.put("currentTraining", currentTraining);
+            trainingPlanObj.put("method", plan.getTrainingMethod().getTrainingTag());
             JSONArray trainingsArray = new JSONArray();
             for(int i=0; i<plan.getTrainings().size(); i++){
-                JSONObject trainingObj = new JSONObject();
                 Training t= plan.getTrainings().get(i);
-                for(int j=0; j<t.getExercises().size(); i++){
+                JSONObject trainingObj = new JSONObject();
+                trainingObj.put("name", t.getTrainingLabel());
+                trainingObj.put("desc", t.getTrainingDescription());
+                JSONArray exercisesArray = new JSONArray();
+                for(int j=0; j<t.getExercises().size(); j++){
+                    JSONObject exerciseObj = new JSONObject();
                     WorkoutExerciseInfo wei = t.getExercises().get(j);
-                    trainingObj.put("exId", wei.getExercise().getId());
-                    trainingObj.put("maxWeight", wei.getMaxWeight());
-                    trainingObj.put("series", wei.getNumberOfSeries());
+                    exerciseObj.put("exId", wei.getExercise().getId());
+                    exerciseObj.put("maxWeight", wei.getMaxWeight());
+                    exerciseObj.put("series", wei.getNumberOfSeries());
+                    exercisesArray.put(exerciseObj);
                 }
+                trainingObj.put("exercises", exercisesArray);
                 trainingsArray.put(trainingObj);
             }
-            trainingsObj.put("trainings", trainingsArray);
+            trainingPlanObj.put("trainings", trainingsArray);
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(context.getApplicationContext(), "Wystapiły błedy podczas " +
+                    "zapisu planu treningowego", Toast.LENGTH_LONG).show();
         }
-        prefs.edit().putString("trainigs", trainingsObj.toString()).commit();
+        prefs.edit().putString("trainigPlan", trainingPlanObj.toString()).commit();
+        prefs.edit().putBoolean(Constants.IS_PLAN_CREATED, true);
+    }
+
+    public void parseTrainingPlan(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
+        String trainingPlanStr= prefs.getString("trainigPlan", null);
+        if(trainingPlanStr!=null){
+            try {
+                JSONObject trainingPlanObj = new JSONObject(trainingPlanStr);
+                currentTraining = trainingPlanObj.getInt("currentTraining");
+                int trainingMethodTag = trainingPlanObj.getInt("method");
+                createMethodFromTag(trainingMethodTag);
+                JSONArray trainingsArray = trainingPlanObj.getJSONArray("trainings");
+                for(int i=0; i< trainingsArray.length(); i++){
+                    JSONObject trainingObj = trainingsArray.getJSONObject(i);
+                    Training training = new Training();
+
+                    String name = trainingObj.getString("name");
+                    String desc = trainingObj.getString("desc");
+                    training.setTrainingLabel(name);
+                    training.setTrainingDescription(desc);
+
+                    JSONArray exercisesArray = trainingObj.getJSONArray("exercises");
+                    for(int j=0; j<exercisesArray.length(); j++){
+                        JSONObject exerciseObj = exercisesArray.getJSONObject(j);
+                        long id = exerciseObj.getLong("exId");
+                        double maxWeight = exerciseObj.getDouble("maxWeight");
+                        int series = exerciseObj.getInt("series");
+                        ExerciseDAO exerciseDAO = new ExerciseDAO(context);
+                        ExerciseInfo ei = exerciseDAO.getElementById(id);
+                        WorkoutExerciseInfo wei = new WorkoutExerciseInfo(series, ei, maxWeight);
+                        training.getExercises().add(wei);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    void createMethodFromTag(int TAG){
+        switch (TAG){
+            case Constants.TrainingFromAnimalpak :
+                plan.setTrainingMethod(new StrengthAnimalpakTraining());
+                break;
+            case Constants.StrengthFBW :
+                plan.setTrainingMethod(new StrengthFBW());
+                break;
+            case Constants.StrengthPPL:
+                plan.setTrainingMethod(new StrengthPPL());
+                break;
+            case Constants.Split:
+                plan.setTrainingMethod(new Split());
+                break;
+            case Constants.RussianPowerliftingTraining:
+                plan.setTrainingMethod(new RussianPowerliftingTraining());
+                break;
+            case Constants.RippetoeTraining:
+                plan.setTrainingMethod(new RippetoeTraining());
+                break;
+            case Constants.MassPPL:
+                plan.setTrainingMethod(new MassPPL());
+                break;
+            case Constants.MassFBW:
+                plan.setTrainingMethod(new MassFBW());
+                break;
+        }
     }
 }
