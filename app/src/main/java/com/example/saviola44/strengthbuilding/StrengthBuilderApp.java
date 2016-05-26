@@ -1,7 +1,16 @@
 package com.example.saviola44.strengthbuilding;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
+import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +27,19 @@ public class StrengthBuilderApp {
     private StrengthBuilderApp(){
 
     }
+    /*
+    do zapamietania
+    -currenttraining //shared prefs
+    -trziningplan
+            -getTrainingTAG id metody treningowej //shared prefs
+            -lista trenignow Training //DB id
+                -nazwa DB String
+                -opis DB String
+                -workoutexercisesinfo lista
+                    -ExerciseInfo exercise; //id
+                    int numberOfSeries;
+                     double maxWeight;
+     */
 
     public TrainingPlan getPlan() {
         return plan;
@@ -83,5 +105,32 @@ public class StrengthBuilderApp {
 
     public void setCurrentTraining(int currentTraining) {
         this.currentTraining = currentTraining;
+    }
+
+    public void saveTrainingPlan(Context context){
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
+        currentTraining = 0;
+        prefs.edit().putInt("currentTraining", currentTraining);
+        prefs.edit().putInt("method", plan.getTrainingMethod().getTrainingTag());
+        JSONObject trainingsObj = new JSONObject();
+        try {
+
+            JSONArray trainingsArray = new JSONArray();
+            for(int i=0; i<plan.getTrainings().size(); i++){
+                JSONObject trainingObj = new JSONObject();
+                Training t= plan.getTrainings().get(i);
+                for(int j=0; j<t.getExercises().size(); i++){
+                    WorkoutExerciseInfo wei = t.getExercises().get(j);
+                    trainingObj.put("exId", wei.getExercise().getId());
+                    trainingObj.put("maxWeight", wei.getMaxWeight());
+                    trainingObj.put("series", wei.getNumberOfSeries());
+                }
+                trainingsArray.put(trainingObj);
+            }
+            trainingsObj.put("trainings", trainingsArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        prefs.edit().putString("trainigs", trainingsObj.toString()).commit();
     }
 }

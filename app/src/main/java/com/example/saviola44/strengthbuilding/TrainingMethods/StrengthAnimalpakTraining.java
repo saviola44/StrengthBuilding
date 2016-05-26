@@ -36,6 +36,7 @@ public class StrengthAnimalpakTraining implements TrainingMethod {
         return TAG;
     }
 
+    //zmien nazwe na mode
     @Override
     public int askAboutTAG() {
         return ShowAllExercisesActivity.askMaxWeightAfterClickTAG;

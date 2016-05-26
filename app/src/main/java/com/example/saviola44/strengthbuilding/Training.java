@@ -17,17 +17,17 @@ public class Training implements Parcelable{
     String trainingLabel;
     String trainingDescription;
     ArrayList<WorkoutExerciseInfo> exercises;
-    ArrayList<Integer> exercisesSeries;
+   // ArrayList<Integer> exercisesSeries;
 
     public Training() {
         exercises = new ArrayList<>();
-        exercisesSeries = new ArrayList<>();
+        //exercisesSeries = new ArrayList<>();
     }
     protected Training(Parcel in){
         trainingLabel = in.readString();
         trainingDescription = in.readString();
         exercises =  in.createTypedArrayList(WorkoutExerciseInfo.CREATOR);
-        exercisesSeries = (ArrayList<Integer>) in.readSerializable();
+        //exercisesSeries = (ArrayList<Integer>) in.readSerializable();
     }
 
     public static final Creator<Training> CREATOR = new Creator<Training>() {
@@ -62,9 +62,9 @@ public class Training implements Parcelable{
         return exercises;
     }
 
-    public List<Integer> getExercisesSeries() {
-        return exercisesSeries;
-    }
+    //public List<Integer> getExercisesSeries() {
+        //return exercisesSeries;
+  //  }
 
 
     @Override
@@ -77,6 +77,6 @@ public class Training implements Parcelable{
         dest.writeString(trainingLabel);
         dest.writeString(trainingDescription);
         dest.writeTypedList(exercises);
-        dest.writeSerializable(exercisesSeries);
+       // dest.writeSerializable(exercisesSeries);
     }
 }
