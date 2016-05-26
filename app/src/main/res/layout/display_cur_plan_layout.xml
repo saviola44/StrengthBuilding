@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#CC140F0F"
-    >
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/header"
         android:orientation="vertical"
         android:background="@color/colorPrimary">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/trainingMethodTV"
             android:padding="5dp"
-            android:textSize="24dp"
-            android:textStyle="bold"
+            android:textSize="14dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="STRENGTH BUILDING"/>
+            android:text="Metoda treningowa"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
@@ -28,13 +24,13 @@
 
     </LinearLayout>
 
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
-        android:id="@+id/mainOptionLV">
+        android:layout_below="@id/header"
+        android:layout_above="@id/footer"
+        android:id="@+id/trainingsLV">
+
     </ListView>
 
-</LinearLayout>
-
+</RelativeLayout>

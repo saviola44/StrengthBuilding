@@ -39,6 +39,7 @@ public class StrengthBuilderApp {
     private StrengthBuilderApp(){
 
     }
+
     /*
     do zapamietania
     -currenttraining //shared prefs

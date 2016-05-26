@@ -22,6 +22,8 @@
         <activity android:name=".Activities.AddTrainingActivity" />
         <activity android:name=".Activities.DoTrainingActivity"
             android:screenOrientation="userPortrait"/>
+        <activity android:name=".Activities.DisplayTrainingPlanActivity"/>
+        <activity android:name=".Activities.DisplayTrainingActivity" />
     </application>
 
 </manifest>

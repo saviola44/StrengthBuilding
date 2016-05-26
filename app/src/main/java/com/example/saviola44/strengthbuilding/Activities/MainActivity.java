@@ -42,20 +42,20 @@ public class MainActivity extends AppCompatActivity {
         listViewOptions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position){
+                switch (position) {
                     case 1: {
                         goToDisplayTrainingPlan();
                         break;
                     }
-                    case 2 : {
+                    case 2: {
                         goToSelectMethodActivity();
                         break;
                     }
-                    case 3 : {
+                    case 3: {
                         goToDoTrainingActivity();
                         break;
                     }
-                    case 5 : {
+                    case 5: {
                         goToShowExActivity();
                         break;
                     }
@@ -100,7 +100,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void goToDisplayTrainingPlan(){
-        Toast.makeText(getApplicationContext(), "Funkcjonalnosc jeszcze nie dodana", Toast.LENGTH_LONG).show();
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
+        if(app.getPlan()!=null){
+            Intent intent = new Intent(getApplicationContext(), DisplayTrainingPlanActivity.class);
+            startActivity(intent);
+        }
     }
     public void goToDoTrainingActivity(){
         StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
