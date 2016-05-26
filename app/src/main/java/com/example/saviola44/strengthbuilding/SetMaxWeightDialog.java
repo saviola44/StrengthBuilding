@@ -26,36 +26,33 @@ public class SetMaxWeightDialog extends DialogFragment {
     }
 
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder createProjectAlert = new AlertDialog.Builder(getActivity());
         String title = getArguments().getString("title");
-        final String hint = getArguments().getString("hint");
+        //final String hint = getArguments().getString("hint");
         final String alert = getArguments().getString("alert");
         createProjectAlert.setTitle(title);
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
         createProjectAlert.setView(inflater.inflate(R.layout.set_max_weight_dialog_layout, null))
                 .setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         maxWeightET = (EditText) getDialog().findViewById(R.id.maxWeightET);
-                        maxWeightET.setHint(hint);
-                        if(maxWeightET!=null){
+                        //maxWeightET.setHint("elo");
+                        if (maxWeightET != null) {
                             String weightStr = maxWeightET.getText().toString();
-                            if(weightStr!=null && !weightStr.equals("")){
+                            if (weightStr != null && !weightStr.equals("")) {
                                 double max = Double.parseDouble(maxWeightET.getText().toString());
 
                                 handler = (SetMaxWeight) getActivity();
                                 handler.setMaxWeight(Double.parseDouble(weightStr));
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(getContext(), alert, Toast.LENGTH_LONG).show();
                             }
-                        }else{
+                        } else {
                             Log.d("dialog", "nie znaleziono widoku edit text playlist_name");
                         }
                     }
@@ -69,6 +66,8 @@ public class SetMaxWeightDialog extends DialogFragment {
                         return;
                     }
                 });
+
+
 
         return createProjectAlert.create();
 

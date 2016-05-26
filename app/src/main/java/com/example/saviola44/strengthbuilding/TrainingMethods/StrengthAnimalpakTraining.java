@@ -69,12 +69,10 @@ public class StrengthAnimalpakTraining implements TrainingMethod {
                     preparedTrenEx.add(we);
                 }
                 else {
-                    if(wei.getExercise().isCompound()){
-                        WorkoutExercise we = new WorkoutExercise(wei.getExercise());
-                        we.setWeight(0);
-                        we.setReps(reps[trainingNb]);
-                        preparedTrenEx.add(we);
-                    }
+                    WorkoutExercise we = new WorkoutExercise(wei.getExercise());
+                    we.setWeight(0);
+                    we.setReps(10);
+                    preparedTrenEx.add(we);
                 }
             }
         }
