@@ -1,5 +1,6 @@
 package com.example.saviola44.strengthbuilding;
 
+import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
 import java.util.ArrayList;
@@ -12,12 +13,20 @@ public class StrengthBuilderApp {
     private static StrengthBuilderApp app = null;
     private List<String> strengthTrainings;
     private List<String> massTrainings;
+    TrainingPlan plan;
+    private int currentTraining; //ile zostalo juz zrobionych treningow danego planu treningowego
     private StrengthBuilderApp(){
 
     }
 
+    public TrainingPlan getPlan() {
+        return plan;
+    }
+
     public static void createStrengthBuilderApp(){
         app = new StrengthBuilderApp();
+        //odczytaj plan
+        //todoo
         app.initializeStrengthTrainings();
         app.initializeMassTrainings();
     }
@@ -54,5 +63,25 @@ public class StrengthBuilderApp {
 
     public List<String> getMassTrainings() {
         return massTrainings;
+    }
+
+    public void saveTrainingPlan(TrainingPlan plan){
+        //zapisz w bazie danych
+        currentTraining = 0;
+        this.plan = plan;
+    }
+
+    public List<WorkoutExercise> getNextTraining(){
+        if (plan!=null){
+            return plan.getTrainingMethod().getWorkoutExercises(plan);
+        }
+        return null;
+    }
+    public int getCurrentTraining() {
+        return currentTraining;
+    }
+
+    public void setCurrentTraining(int currentTraining) {
+        this.currentTraining = currentTraining;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.saviola44.strengthbuilding;
 
+import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class TrainingPlan {
     public void setTrainingMethod(TrainingMethod trainingMethod) {
         this.trainingMethod = trainingMethod;
     }
+
 
 
     public List<Training> getTrainings() {

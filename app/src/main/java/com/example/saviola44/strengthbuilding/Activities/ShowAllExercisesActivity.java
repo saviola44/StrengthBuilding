@@ -39,6 +39,8 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements SetMa
     public static final int returnExAfterClickTAG = 1;
     public static final int showExAfterClickTAG = 2;
     public static final int askMaxWeightAfterClickTAG = 3;
+    public static final int askAbout1RMandSERIESTAG = 4;
+    public static final int askAboutSeriesTAG =5;
 
     ExerciseInfo selectedEx; //zmienna ktora pamieta wybrane cwiczenie zeby po powrocie z dialogu
                             // ustawic jej 1Rm
@@ -85,10 +87,25 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements SetMa
                 else if (currentMode == askMaxWeightAfterClickTAG){
                     Muscle m = muscleParts.get(groupPosition);
                     selectedEx = exercises.get(m.getId()).get(childPosition);
-
-                    Toast.makeText(getApplicationContext(), "elo", Toast.LENGTH_LONG).show();
-                    SetMaxWeightDialog dialog = new SetMaxWeightDialog();
-                    dialog.show(getSupportFragmentManager(), "setMaxTAG");
+                    if(selectedEx.isCompound()) {
+                        SetMaxWeightDialog dialog = new SetMaxWeightDialog();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", "Wprowadź swój 1RM");
+                        bundle.putString("hint", "Ciężar w kilogrmach");
+                        bundle.putString("alert", "Musisz podac swój ciezar 1RM");
+                        dialog.setArguments(bundle);
+                        dialog.show(getSupportFragmentManager(), "setMaxTAG");
+                    }
+                    else {
+                        //liczba serii
+                        SetMaxWeightDialog dialog = new SetMaxWeightDialog();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("title", "Wprowadź liczbe serii");
+                        bundle.putString("hint", "liczba serii");
+                        bundle.putString("alert", "niepoprawne dane");
+                        dialog.setArguments(bundle);
+                        dialog.show(getSupportFragmentManager(), "setMaxTAG");
+                    }
                 }
                 return false;
             }
@@ -99,6 +116,16 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements SetMa
     public void setMaxWeight(double weight) {
         WorkoutExerciseInfo w = new WorkoutExerciseInfo(selectedEx);
         w.setMaxWeight(weight);
+        Intent result = new Intent();
+        result.putExtra("exercise", w);
+        setResult(Activity.RESULT_OK, result);
+        finish();
+    }
+
+    @Override
+    public void setNbOfSeries(int series) {
+        WorkoutExerciseInfo w = new WorkoutExerciseInfo(selectedEx);
+        w.setNumberOfSeries(series);
         Intent result = new Intent();
         result.putExtra("exercise", w);
         setResult(Activity.RESULT_OK, result);

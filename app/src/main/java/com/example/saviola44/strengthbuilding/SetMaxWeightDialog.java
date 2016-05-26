@@ -21,6 +21,7 @@ public class SetMaxWeightDialog extends DialogFragment {
     SetMaxWeight handler;
     public interface SetMaxWeight{
          void setMaxWeight(double weight);
+        void setNbOfSeries(int series);
          void cancel();
     }
 
@@ -30,7 +31,10 @@ public class SetMaxWeightDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder createProjectAlert = new AlertDialog.Builder(getActivity());
-        createProjectAlert.setTitle("Wprowadź swój 1RM");
+        String title = getArguments().getString("title");
+        final String hint = getArguments().getString("hint");
+        final String alert = getArguments().getString("alert");
+        createProjectAlert.setTitle(title);
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         createProjectAlert.setView(inflater.inflate(R.layout.set_max_weight_dialog_layout, null))
@@ -39,6 +43,7 @@ public class SetMaxWeightDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         maxWeightET = (EditText) getDialog().findViewById(R.id.maxWeightET);
+                        maxWeightET.setHint(hint);
                         if(maxWeightET!=null){
                             String weightStr = maxWeightET.getText().toString();
                             if(weightStr!=null && !weightStr.equals("")){
@@ -48,7 +53,7 @@ public class SetMaxWeightDialog extends DialogFragment {
                                 handler.setMaxWeight(Double.parseDouble(weightStr));
                             }
                             else {
-                                Toast.makeText(getContext(), "Musisz podac swój ciezar 1RM", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), alert, Toast.LENGTH_LONG).show();
                             }
                         }else{
                             Log.d("dialog", "nie znaleziono widoku edit text playlist_name");

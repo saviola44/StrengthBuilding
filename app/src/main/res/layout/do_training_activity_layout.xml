@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/currentDateTV"
+        android:text="Trening: 2016:02:23"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/doTrainingFooter"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/endTraingButton"
+            android:layout_weight="1"
+            android:text="Zakoncz trening"/>
+        <Button
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/addExerciseButton"
+            android:text="Dodaj cwiczenie"/>
+    </LinearLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doTrainingExLV"
+        android:layout_above="@id/doTrainingFooter"
+        android:layout_below="@id/currentDateTV"></ListView>
+
+</RelativeLayout>

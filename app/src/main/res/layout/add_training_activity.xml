@@ -24,19 +24,19 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
         android:id="@+id/footer"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="right"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:id="@+id/labelAddEx"
+            android:layout_alignParentLeft="true"
             android:textSize="20dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical"
             android:text="Dodaj kolejne ćwiczenie"
             android:gravity="left"/>
         <ImageView
@@ -45,9 +45,29 @@
             android:id="@+id/addTrainigIV"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_input_add"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_below="@id/labelAddEx"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="Zrobione"
+            android:gravity="left"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/AddExerciseDoneIV"
+            android:layout_below="@id/addTrainigIV"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
             android:src="@android:drawable/ic_input_add"/>
 
-    </LinearLayout>
+    </RelativeLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

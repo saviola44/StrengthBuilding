@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
 import com.example.saviola44.strengthbuilding.Constants;
@@ -17,6 +18,7 @@ import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
+import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +43,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
+                    case 1: {
+                        goToDisplayTrainingPlan();
+                        break;
+                    }
                     case 2 : {
                         goToSelectMethodActivity();
+                        break;
+                    }
+                    case 3 : {
+                        goToDoTrainingActivity();
                         break;
                     }
                     case 5 : {
@@ -88,5 +98,15 @@ public class MainActivity extends AppCompatActivity {
     private void goToSelectMethodActivity(){
         Intent intent = new Intent(getApplicationContext(), SelectTrainingMethodActivity.class);
         startActivity(intent);
+    }
+    public void goToDisplayTrainingPlan(){
+        Toast.makeText(getApplicationContext(), "Funkcjonalnosc jeszcze nie dodana", Toast.LENGTH_LONG).show();
+    }
+    public void goToDoTrainingActivity(){
+        StrengthBuilderApp app = StrengthBuilderApp.getInstance().getInstance();
+        if(app.getPlan()!=null){
+            Intent intent = new Intent(getApplicationContext(), DoTrainingActivity.class);
+            startActivity(intent);
+        }
     }
 }

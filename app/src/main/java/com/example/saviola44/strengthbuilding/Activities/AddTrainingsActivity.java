@@ -9,11 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
 import com.example.saviola44.strengthbuilding.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.R;
+import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 import com.example.saviola44.strengthbuilding.Training;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassPPL;
@@ -24,6 +26,7 @@ import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthAnimalpakT
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
+import com.example.saviola44.strengthbuilding.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class AddTrainingsActivity extends AppCompatActivity
     TextView trainingMathodTV;
     TrainingMethod trainingMethod; //wybrana metoda treningowa - przesylana w intencji
     ImageView addTrainingIV; //przycisk dodawania treninfu w postaci obrazka
+    ImageView doneTrainingIV;
     public static final String TRAINING_TAG = "metoda";
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class AddTrainingsActivity extends AppCompatActivity
         trainingsLV = (ListView) findViewById(R.id.trainingsLV);
         trainingMathodTV = (TextView) findViewById(R.id.trainingMethodTV);
         addTrainingIV = (ImageView) findViewById(R.id.addTrainigIV);
+        doneTrainingIV = (ImageView) findViewById(R.id.doneTrainingIV);
+
         trainings = new ArrayList<>();
         adapter = new AddedTrainingsAdapter(getApplicationContext(),
                 R.layout.added_trainings_row_layout, trainings);
@@ -59,12 +65,6 @@ public class AddTrainingsActivity extends AppCompatActivity
             trainingMathodTV.setText(trainingMethod.toString());
         }
 
-        addTrainingIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addNewTrainingDialog.show(getSupportFragmentManager(), "createTrainingTAG");
-            }
-        });
         trainingsLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -72,7 +72,45 @@ public class AddTrainingsActivity extends AppCompatActivity
                 Intent intent = new Intent(getApplicationContext(), AddTrainingActivity.class);
                 intent.putExtra("training", t);
                 intent.putExtra("mode", trainingMethod.askAboutTAG());
+                intent.putExtra("complexSeries", trainingMethod.nbOfSeriesForStrengthEx());
                 startActivityForResult(intent, position);
+            }
+        });
+        addTrainingIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewTrainingDialog.show(getSupportFragmentManager(), "createTrainingTAG");
+            }
+        });
+
+        doneTrainingIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean ok = true;
+                if(trainings.size()==0){
+                    Toast.makeText(getApplicationContext(), "Plan treningowy musi posiadac conajmniej " +
+                            "jeden trening", Toast.LENGTH_LONG).show();
+                    ok=false;
+                }
+                else {
+                    for(int i=0; i<trainings.size(); i++){
+                        if(trainings.get(i).getExercises().size()==0){
+                            Toast.makeText(getApplicationContext(), "Trening " +
+                                    trainings.get(i).getTrainingLabel() + " nie zawiera cwiczen!", Toast.LENGTH_LONG).show();
+                            ok=false;
+                        }
+                    }
+                }
+                if(ok){
+                    Toast.makeText(getApplicationContext(), "Generuje plan Treningowy", Toast.LENGTH_LONG).show();
+                    TrainingPlan plan = new TrainingPlan();
+                    plan.setTrainingMethod(trainingMethod);
+                    plan.setTrainings(trainings);
+                    StrengthBuilderApp app = StrengthBuilderApp.getInstance();
+                    app.saveTrainingPlan(plan);
+                    finish();
+
+                }
             }
         });
     }

@@ -23,17 +23,21 @@ import java.util.List;
 
 /**
  * Created by saviola44 on 24.05.16.
+ *
  */
 public class AddTrainingActivity extends AppCompatActivity {
     TextView trainingNameTV;
     ImageView addNewExerciseIV;
+    ImageView doneAddExIV;
     ListView exercisesLV;
     Training training;
     ListAdapter adapter;
 
-
-
-    private int asking;
+    private int asking; //w zależnosci od tej zmiennej jesli bedziemy wybierac cwiczenia to
+                        //bedziemy sie pytac o 1RM lub nie,
+    private int complexSeries; //liczba serii dla cwiczen wielostawowych - jest rozna w zaleznosci od treningu
+                                //mozna by to odczytywac z klas treningu ale malo wydajne wydaje sie przesylanie
+                                //calej klasy zwlaszcza ze trzeba by implementowac jeszcze Parcelable
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,9 +47,11 @@ public class AddTrainingActivity extends AppCompatActivity {
         trainingNameTV = (TextView) findViewById(R.id.TrainingNameLabelTV);
         exercisesLV = (ListView) findViewById(R.id.trainingExercisesLV);
         addNewExerciseIV = (ImageView) findViewById(R.id.addTrainigIV);
+        doneAddExIV = (ImageView) findViewById(R.id.AddExerciseDoneIV);
 
         training = getIntent().getParcelableExtra("training");
         asking = getIntent().getIntExtra("mode", ShowAllExercisesActivity.returnExAfterClickTAG);
+        complexSeries = getIntent().getIntExtra("complexSeries",4);
 
         trainingNameTV.setText(training.getTrainingLabel());
         adapter = new ArrayAdapter<WorkoutExerciseInfo>(getApplicationContext(), android.R.layout.simple_list_item_1, training.getExercises());
@@ -59,6 +65,15 @@ public class AddTrainingActivity extends AppCompatActivity {
                 startActivityForResult(intent, asking);
             }
         });
+        doneAddExIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent result = new Intent();
+                result.putExtra("training", training);
+                setResult(Activity.RESULT_OK, result);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -66,8 +81,10 @@ public class AddTrainingActivity extends AppCompatActivity {
         if(resultCode == Activity.RESULT_OK){
             if(requestCode==asking) {
                 WorkoutExerciseInfo w = data.getParcelableExtra("exercise");
+                if(asking==ShowAllExercisesActivity.askMaxWeightAfterClickTAG){
+                    w.setNumberOfSeries(complexSeries);
+                }
                 exercisesLV.setAdapter(adapter);
-                Toast.makeText(getApplicationContext(), "udało sie: " + w.getMaxWeight(), Toast.LENGTH_LONG).show();
                 training.getExercises().add(w);
             }
         }

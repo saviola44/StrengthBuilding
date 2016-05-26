@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="7"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/doTrainingExNameTV"
+            android:paddingLeft="10dp"
+            android:text="Nazwa cwiczenia"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/doTrainingExTV"
+            android:paddingLeft="10dp"
+            android:text="60kgx10powt"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/editWorkoutIV"
+            android:layout_height="60dp"
+            android:src="@android:drawable/ic_menu_edit"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/acceptWorkoutIV"
+            android:layout_height="60dp"
+            android:src="@drawable/ok"/>
+    </LinearLayout>
+
+</LinearLayout>
