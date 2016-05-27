@@ -32,7 +32,7 @@ public class ExHistTable {
         sb.append(Id + " INTEGER PRIMARY KEY AUTOINCREMENT, ");
         sb.append(reps + " INTEGER NOT NULL, ");
         sb.append(weight + " REAL, ");
-        sb.append(comment + "TEXT, ");
+        sb.append(comment + " TEXT, ");
         sb.append(date + " INTEGER NOT NULL, ");
         sb.append(exercise + " INTEGER NOT NULL, ");
         sb.append(" FOREIGN KEY (" + date + ") REFERENCES ");

@@ -18,7 +18,7 @@
         android:layout_marginRight="10dp"
         android:layout_below="@id/trainingNameTV"
         android:textSize="14dp"
-        android:text="opis treningu"/>
+        android:text="Kliknij aby zobaczyc trening"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"

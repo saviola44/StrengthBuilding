@@ -8,6 +8,15 @@ public class WorkoutExercise {
     int weight;
     int reps;
     String comment;
+    long date;
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
 
     public WorkoutExercise(ExerciseInfo exercise) {
         this.exercise = exercise;

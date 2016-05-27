@@ -13,14 +13,20 @@ import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
 import com.example.saviola44.strengthbuilding.Constants;
+import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
+import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+                    case 0: {
+                        goToTrainingsHistory();
+                        break;
+                    }
                     case 1: {
                         goToDisplayTrainingPlan();
                         break;
@@ -62,13 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        ExerciseDAO e = new ExerciseDAO(getApplicationContext());
-        List<ExerciseInfo> lists = e.getAllElements();
-        for(int i=0; i< lists.size(); i++){
-            ExerciseInfo exercise = lists.get(i);
-            Log.d("eloooo", exercise.getNazwa() + " " + exercise.getMuscleParts()  + exercise.isCompound());
-        }
-
 
     }
     private void createOptions(){
@@ -110,6 +113,28 @@ public class MainActivity extends AppCompatActivity {
         StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());
         if(app.getPlan()!=null){
             Intent intent = new Intent(getApplicationContext(), DoTrainingActivity.class);
+            startActivity(intent);
+        }
+    }
+    void goToTrainingsHistory(){
+        DAO dao = new HistoryDAO(getApplicationContext());
+        List<Long> trainingsHist = dao.getAllElements();
+        if(trainingsHist.size()<1){
+            Toast.makeText(getApplicationContext(), "Nie wykonałeś jeszcze żadnego treningu", Toast.LENGTH_LONG).show();
+        }
+        else {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            ArrayList<String> datesString = new ArrayList<>();
+
+            for(int i = 0; i < trainingsHist.size(); i++){
+                cal.setTimeInMillis(trainingsHist.get(i));
+                Date date = cal.getTime();
+                String dateString = dateFormat.format(date);
+                datesString.add(dateString);
+            }
+            Intent intent = new Intent(getApplicationContext(), TrainingsHistoryActivity.class);
+            intent.putStringArrayListExtra("history", datesString);
             startActivity(intent);
         }
     }
