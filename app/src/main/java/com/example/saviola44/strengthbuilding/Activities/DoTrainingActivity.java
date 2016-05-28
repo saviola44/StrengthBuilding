@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.DoTrainingAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
+import com.example.saviola44.strengthbuilding.Database.DAO.ExHistDAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
 import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
@@ -77,7 +78,7 @@ public class DoTrainingActivity extends AppCompatActivity implements EditSeriesD
         endTrainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO dao = new HistoryDAO(getApplicationContext());
+                DAO dao = new ExHistDAO(getApplicationContext());
                 dao.saveElement(exercises);
                 StrengthBuilderApp.getInstance(getApplicationContext()).finishCurrentTraining();
                 finish();

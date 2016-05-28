@@ -52,10 +52,11 @@ public class ExHistDAO implements DAO<List<WorkoutExercise>>{
             String comment = element.getComment();
             if (comment == null) comment = "";
             insertStatement.bindString(5, comment);
+            insertStatement.executeInsert();
         }
         DAO history = new HistoryDAO(context);
         history.saveElement(date);
-        return insertStatement.executeInsert();
+        return 0;
     }
 
     @Override
