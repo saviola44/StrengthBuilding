@@ -123,18 +123,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Nie wykonałeś jeszcze żadnego treningu", Toast.LENGTH_LONG).show();
         }
         else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Calendar cal = Calendar.getInstance();
-            ArrayList<String> datesString = new ArrayList<>();
-
-            for(int i = 0; i < trainingsHist.size(); i++){
-                cal.setTimeInMillis(trainingsHist.get(i));
-                Date date = cal.getTime();
-                String dateString = dateFormat.format(date);
-                datesString.add(dateString);
+            long [] datesArray = new long[trainingsHist.size()];
+            for(int i=0; i<datesArray.length; i++){
+                datesArray[i] = trainingsHist.get(i);
             }
             Intent intent = new Intent(getApplicationContext(), TrainingsHistoryActivity.class);
-            intent.putStringArrayListExtra("history", datesString);
+            intent.putExtra("history", datesArray);
             startActivity(intent);
         }
     }

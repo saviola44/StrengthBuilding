@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
 import com.example.saviola44.strengthbuilding.Database.Tables.ExHistTable;
@@ -122,6 +123,7 @@ public class ExHistDAO implements DAO<List<WorkoutExercise>>{
                 exercise.setComment(comment);
                 exercise.setDate(date);
                 exercises.add(exercise);
+
             }while(c.moveToNext());
         }
         if(c!=null && !c.isClosed()){

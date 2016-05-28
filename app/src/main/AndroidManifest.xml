@@ -25,6 +25,7 @@
         <activity android:name=".Activities.DisplayTrainingPlanActivity"/>
         <activity android:name=".Activities.DisplayTrainingActivity" />
         <activity android:name=".Activities.TrainingsHistoryActivity" />
+        <activity android:name=".Activities.ShowWorkoutTrainingActivity"/>
     </application>
 
 </manifest>

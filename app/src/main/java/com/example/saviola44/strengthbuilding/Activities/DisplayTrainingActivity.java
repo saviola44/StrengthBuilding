@@ -40,6 +40,5 @@ public class DisplayTrainingActivity extends AppCompatActivity {
         trainingNameTV.setText(training.getTrainingLabel());
         adapter = new ArrayAdapter<WorkoutExerciseInfo>(getApplicationContext(), android.R.layout.simple_list_item_1, training.getExercises());
         exercisesLV.setAdapter(adapter);
-        exercisesLV.setClickable(false);
     }
 }

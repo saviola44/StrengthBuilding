@@ -75,11 +75,14 @@ public class ExerciseDAO implements DAO<ExerciseInfo> {
     public ExerciseInfo getElementById(long id) {
         ExerciseInfo exercise = null;
         Cursor c = db.query(ExercisesTable.TABLE_NAME, new String[]{ExercisesTable.exerciseName,
-                ExercisesTable.muscleWorked, ExercisesTable.isCompound}, null, null, null, null, null, null);
+                ExercisesTable.muscleWorked, ExercisesTable.isCompound},
+                ExercisesTable.Id +  "=?", //where clausule
+                new String[]{"" + id}, //where args
+                null, null, null, null);
         if(c.moveToFirst()){
-            String name = c.getString(1);
-            long workedMuscle = c.getLong(2);
-            long isCompoundLong = c.getLong(3);
+            String name = c.getString(0);
+            long workedMuscle = c.getLong(1);
+            long isCompoundLong = c.getLong(2);
             boolean isCompound = (isCompoundLong==1L);
             exercise = new ExerciseInfo(id, name, workedMuscle, isCompound);
         }
