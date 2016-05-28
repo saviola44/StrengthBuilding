@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.TrainingHistoryAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExHistDAO;
+import com.example.saviola44.strengthbuilding.Dialogs.CommentInfoDialog;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.R;
 
@@ -32,5 +34,19 @@ public class ShowWorkoutTrainingActivity extends ListActivity {
                 R.layout.training_history_row_layout, exercises);
         setListAdapter(adapter);
 
+
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        String com = exercises.get(position).getComment();
+        if(com!=null && !com.equals("")){
+            CommentInfoDialog dialog = new CommentInfoDialog();
+            Bundle bundle = new Bundle();
+            bundle.putString("com", com);
+            dialog.setArguments(bundle);
+            dialog.show(getFragmentManager(), "Show comment");
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.example.saviola44.strengthbuilding.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.saviola44.strengthbuilding.Activities.ShowWorkoutTrainingActivity;
+import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.R;
@@ -27,7 +31,7 @@ public class TrainingHistoryAdapter extends ArrayAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View row = convertView;
         DataHandler handler;
         if(convertView==null){
@@ -56,6 +60,7 @@ public class TrainingHistoryAdapter extends ArrayAdapter {
         if(we.getComment()!=null && !we.getComment().equals("")){
             handler.comment.setText("kliknij aby zobaczyc komentarz");
         }
+        else handler.comment.setText("");
         return row;
     }
 
@@ -73,6 +78,5 @@ public class TrainingHistoryAdapter extends ArrayAdapter {
         TextView nameTV;
         TextView repWeightTV;
         TextView comment;
-        ImageView editIV;
     }
 }
