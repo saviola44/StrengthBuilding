@@ -35,7 +35,7 @@ public class ParseJSONExercises extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         AssetManager manager = context.getAssets();
         try{
-            Log.d("doInBackgroundmethod", "elo elo ");
+            Log.d("doInBackgroundmethod", "poarsuje JSON'a ");
             InputStream input = manager.open("Exercises.json");
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
             StringBuilder sB = new StringBuilder();
@@ -88,10 +88,11 @@ public class ParseJSONExercises extends AsyncTask<Void, Void, Void> {
         for(int i=0; i<jsonArray.length(); i++){
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                long id = jsonObject.getLong("id");
                 String nazwa = jsonObject.getString("nazwa");
                 long workedMuscle = jsonObject.getLong("cwiczona_partia");
                 boolean isCompund = jsonObject.getBoolean("wielostawowe");
-                ExerciseInfo exercise = new ExerciseInfo(nazwa, workedMuscle, isCompund);
+                ExerciseInfo exercise = new ExerciseInfo(id,nazwa, workedMuscle, isCompund);
                 Log.d("insert", nazwa + " " + workedMuscle + " " + isCompund);
                 exerciseDAO.saveElement(exercise);
 

@@ -19,6 +19,10 @@ public class Training implements Parcelable{
     ArrayList<WorkoutExerciseInfo> exercises;
    // ArrayList<Integer> exercisesSeries;
 
+    public void setExercises(ArrayList<WorkoutExerciseInfo> exercises) {
+        this.exercises = exercises;
+    }
+
     public Training() {
         exercises = new ArrayList<>();
         //exercisesSeries = new ArrayList<>();

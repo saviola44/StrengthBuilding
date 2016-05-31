@@ -3,6 +3,7 @@ package com.example.saviola44.strengthbuilding.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -127,6 +128,7 @@ public class AddTrainingsActivity extends AppCompatActivity
                 break;
             case Constants.RippetoeTraining:
                 trainingMethod = new RippetoeTraining();
+
                 break;
             case Constants.RussianPowerliftingTraining:
                 trainingMethod = new RussianPowerliftingTraining();

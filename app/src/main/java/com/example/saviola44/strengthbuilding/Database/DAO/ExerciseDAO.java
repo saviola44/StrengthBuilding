@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class ExerciseDAO implements DAO<ExerciseInfo> {
     public static final String INSERT = "insert into " + ExercisesTable.TABLE_NAME
-            + " (" + ExercisesTable.exerciseName + ", " +
-            ExercisesTable.muscleWorked + ", " + ExercisesTable.isCompound +  ")"  + " values (?,?,?)";
+            + " (" + ExercisesTable.Id + ", " + ExercisesTable.exerciseName + ", " +
+            ExercisesTable.muscleWorked + ", " + ExercisesTable.isCompound +  ")"  + " values (?,?,?,?)";
     private SQLiteDatabase db;
     private SQLiteStatement insertStatement;
     public ExerciseDAO(Context context){
@@ -30,11 +30,12 @@ public class ExerciseDAO implements DAO<ExerciseInfo> {
     @Override
     public long saveElement(ExerciseInfo element) {
         insertStatement.clearBindings();
-        insertStatement.bindString(1, element.getNazwa());
-        insertStatement.bindLong(2, element.getMuscleParts());
+        insertStatement.bindLong(1,element.getId());
+        insertStatement.bindString(2, element.getNazwa());
+        insertStatement.bindLong(3, element.getMuscleParts());
         Long isCompound = 0L;
         if(element.isCompound())isCompound=1L;
-        insertStatement.bindLong(3,isCompound);
+        insertStatement.bindLong(4,isCompound);
         return insertStatement.executeInsert();
     }
 
