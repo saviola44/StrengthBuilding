@@ -16,6 +16,7 @@ import android.widget.Switch;
 
 
 import com.example.saviola44.strengthbuilding.Activities.AddTrainingsActivity;
+import com.example.saviola44.strengthbuilding.Dialogs.GetMain1RMDialog;
 import com.example.saviola44.strengthbuilding.TrainingMethods.RussianPowerliftingTraining;
 
 import java.util.ArrayList;
@@ -82,8 +83,7 @@ public class TrainingMethodFragment extends Fragment{
                     switch (position){//treningi na sile
 
                         case 0: //ruskich
-                            RussianPowerliftingTraining.generateTraining(getActivity().getApplicationContext());
-                            getActivity().finish();
+                            RussianPowerliftingTraining.generateTraining(getActivity());
                             break;
                         case 1: //animal
                             goToAddTrainingActivity(Constants.TrainingFromAnimalpak);
@@ -127,5 +127,8 @@ public class TrainingMethodFragment extends Fragment{
         intent.putExtra(AddTrainingsActivity.TRAINING_TAG, TAG);
         startActivity(intent);
         getActivity().finish();
+    }
+    private void generateRussianTraining(){
+
     }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:id="@+id/squatLinerar">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Przysiad 1RM: "
+                android:gravity="fill"
+                android:textSize="16dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/squat_max_ET"
+                android:textSize="16dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/squatLinerar"
+            android:padding="10dp"
+            android:gravity="fill"
+            android:id="@+id/wlLinerar">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Wyciskanie leząc: "
+                android:textSize="16dp"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/wl_max_ET"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="16dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wlLinerar"
+            android:padding="10dp"
+            android:id="@+id/dlLinerar">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Martwy ciąg: "
+                android:textSize="16dp"/>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/dl_max_ET"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="16dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

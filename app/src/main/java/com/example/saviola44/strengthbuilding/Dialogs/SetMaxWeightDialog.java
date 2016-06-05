@@ -21,9 +21,9 @@ public class SetMaxWeightDialog extends DialogFragment {
     EditText maxWeightET;
     SetMaxWeight handler;
     public interface SetMaxWeight{
-         void setMaxWeight(double weight);
+        void setMaxWeight(double weight);
         void setNbOfSeries(int series);
-         void cancel();
+        void cancel();
     }
 
 
