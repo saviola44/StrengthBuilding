@@ -85,9 +85,12 @@ public class DoTrainingAdapter extends ArrayAdapter {
       //  }
         WorkoutExercise we = (WorkoutExercise) getItem(position);
         handler.nameTV.setText(we.getExercise().getNazwa());
-        handler.repWeightTV.setText(we.getWeight() + "kg x " + we.getReps() + "powt");
-        //handler.optionImage.setImageResource(id);
-        //handler.optionName.setText(option.textOption);
+        if(we.getWeight()==0) {
+            handler.repWeightTV.setText(we.getReps() + "powt");
+        }
+        else{
+            handler.repWeightTV.setText(we.getWeight() + "kg x " + we.getReps() + "powt");
+        }
         return row;
     }
 

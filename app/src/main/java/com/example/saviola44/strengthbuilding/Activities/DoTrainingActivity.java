@@ -15,6 +15,7 @@ import com.example.saviola44.strengthbuilding.Adapters.DoTrainingAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExHistDAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
+import com.example.saviola44.strengthbuilding.Database.MusclePart;
 import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
@@ -70,6 +71,11 @@ public class DoTrainingActivity extends AppCompatActivity implements EditSeriesD
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
                 intent.putExtra("mode", ShowAllExercisesActivity.returnExAfterClickTAG);
+                ArrayList<Integer> musclesIds = new ArrayList<>();
+                for(int i=1; i<7; i++){
+                    musclesIds.add(i);
+                }
+                intent.putIntegerArrayListExtra("muscleIDs",musclesIds);
                 startActivityForResult(intent, 1);
             }
         });

@@ -11,9 +11,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.saviola44.strengthbuilding.Database.MusclePart;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.Training;
+
+import java.util.ArrayList;
 
 /**
  * Created by saviola44 on 24.05.16.
@@ -56,6 +59,11 @@ public class AddTrainingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
                 intent.putExtra("mode", asking);
+                ArrayList<Integer> musclesIds = new ArrayList<>();
+                for(int i=1; i<7; i++){
+                    musclesIds.add(i);
+                }
+                intent.putIntegerArrayListExtra("muscleIDs",musclesIds);
                 startActivityForResult(intent, asking);
             }
         });
@@ -75,7 +83,7 @@ public class AddTrainingActivity extends AppCompatActivity {
         if(resultCode == Activity.RESULT_OK){
             if(requestCode==asking) {
                 WorkoutExerciseInfo w = data.getParcelableExtra("exercise");
-                if(asking==ShowAllExercisesActivity.askMaxWeightAfterClickTAG){
+                if(w.getExercise().isCompound()){
                     w.setNumberOfSeries(complexSeries);
                 }
                 exercisesLV.setAdapter(adapter);

@@ -16,7 +16,9 @@ import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
+import com.example.saviola44.strengthbuilding.Database.MusclePart;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
+import com.example.saviola44.strengthbuilding.Model.Muscle;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
@@ -96,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void goToShowExActivity(){
         Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
+        MusclePart mP = new MusclePart(getApplicationContext());
+        ArrayList<Integer> musclesIds = new ArrayList<>();
+        for(int i=1; i<7; i++){
+            musclesIds.add(i);
+        }
+        intent.putIntegerArrayListExtra("muscleIDs",musclesIds);
+        intent.putExtra("mode", ShowAllExercisesActivity.showExAfterClickTAG);
         startActivity(intent);
     }
     private void goToSelectMethodActivity(){
