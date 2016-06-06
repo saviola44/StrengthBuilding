@@ -35,7 +35,6 @@ public class DoTrainingActivity extends AppCompatActivity implements EditSeriesD
     List<WorkoutExercise> exercises;
     List<Boolean> doneEx;
     StrengthBuilderApp app;
-    TrainingPlan trainingPlan;
     DoTrainingAdapter adapter;
     Button addExButton;
     Button endTrainingButton;
@@ -48,7 +47,6 @@ public class DoTrainingActivity extends AppCompatActivity implements EditSeriesD
         endTrainingButton = (Button) findViewById(R.id.endTraingButton);
 
         app = StrengthBuilderApp.getInstance(getApplicationContext());
-        trainingPlan = app.getPlan();
         exercises = app.getNextTraining();
         doneEx = new ArrayList<>();
         for(int i=0; i<exercises.size(); i++){
