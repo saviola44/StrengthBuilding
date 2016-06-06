@@ -108,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), DisplayTrainingPlanActivity.class);
             startActivity(intent);
         }
+        else{
+            Toast.makeText(getApplicationContext(), "Musisz najpierw skomponowac swój plan treningowy", Toast.LENGTH_LONG).show();
+        }
     }
     public void goToDoTrainingActivity(){
         StrengthBuilderApp app = StrengthBuilderApp.getInstance(getApplicationContext());

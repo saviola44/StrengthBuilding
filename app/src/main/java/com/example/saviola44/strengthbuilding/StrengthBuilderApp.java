@@ -63,7 +63,14 @@ public class StrengthBuilderApp {
         app.initializeStrengthTrainings();
         app.initializeMassTrainings();
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
-        prefs.getBoolean(Constants.IS_PLAN_CREATED, false);
+        boolean isPlanCreated = prefs.getBoolean(Constants.IS_PLAN_CREATED, false);
+        if(isPlanCreated){
+            Log.d("isPlanCreated", "true");
+            app.parseTrainingPlan(context);
+        }
+        else{
+            Log.d("isplanCreated", "false");
+        }
     }
 
     private void initializeStrengthTrainings(){
@@ -152,12 +159,14 @@ public class StrengthBuilderApp {
                     "zapisu planu treningowego", Toast.LENGTH_LONG).show();
         }
         prefs.edit().putString("trainigPlan", trainingPlanObj.toString()).commit();
-        prefs.edit().putBoolean(Constants.IS_PLAN_CREATED, true);
+        prefs.edit().putBoolean(Constants.IS_PLAN_CREATED, true).commit();
     }
 
     public void parseTrainingPlan(Context context){
         SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_PREFS, Context.MODE_PRIVATE);
         String trainingPlanStr= prefs.getString("trainigPlan", null);
+        plan = new TrainingPlan();
+        Log.d("elo", "jestem, tworze plan treningowy");
         if(trainingPlanStr!=null){
             try {
                 JSONObject trainingPlanObj = new JSONObject(trainingPlanStr);
@@ -185,6 +194,7 @@ public class StrengthBuilderApp {
                         WorkoutExerciseInfo wei = new WorkoutExerciseInfo(series, ei, maxWeight);
                         training.getExercises().add(wei);
                     }
+                    plan.getTrainings().add(training);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
