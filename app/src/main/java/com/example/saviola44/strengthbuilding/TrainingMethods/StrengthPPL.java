@@ -14,6 +14,14 @@ import java.util.List;
 public class StrengthPPL extends PPL {
     private static final int TAG = Constants.StrengthPPL;
     private static final String label = "PPL na siłe";
+    double[] weightPercentages = new double[]{
+            0.55, 0.60, 0.55, 0.60, 0.65,
+            0.60, 0.65, 0.70, 0.65, 0.70,
+            0.75, 0.70, 0.75, 0.80, 0.75, 0.80
+    }; //ciezary poczatkowe dla 1 serii
+
+
+
     @Override
     public int getTrainingTag() {
         return TAG;
@@ -26,17 +34,30 @@ public class StrengthPPL extends PPL {
 
     @Override
     public int nbOfSeriesForStrengthEx() {
-        return 4;
+        return 5;
     }
 
-    @Override
-    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan,int trainingNb) {
-        return null;
-    }
 
 
     @Override
     public String toString() {
         return label;
+    }
+
+
+
+    @Override
+    public int getPumpExReps() {
+        return 8;
+    }
+
+    @Override
+    public int getStrengthExReps(int trainingNb) {
+        return 5;
+    }
+
+    @Override
+    public double getSeriesWeight(int trainingNb, int seriesNb, double max) {
+        return (weightPercentages[trainingNb/3]+(0.05*((double)seriesNb)))*max;
     }
 }

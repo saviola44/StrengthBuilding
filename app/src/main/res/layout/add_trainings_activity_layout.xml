@@ -64,7 +64,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:src="@android:drawable/ic_input_add"/>
+            android:src="@drawable/ok_icon"/>
     </RelativeLayout>
     <ListView
         android:layout_width="match_parent"

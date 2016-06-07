@@ -27,6 +27,13 @@ public class Training implements Parcelable{
         exercises = new ArrayList<>();
         //exercisesSeries = new ArrayList<>();
     }
+
+    public Training(String trainingLabel, String trainingDescription) {
+        this.trainingLabel = trainingLabel;
+        this.trainingDescription = trainingDescription;
+        exercises = new ArrayList<>();
+    }
+
     protected Training(Parcel in){
         trainingLabel = in.readString();
         trainingDescription = in.readString();

@@ -17,6 +17,7 @@ import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.Training;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by saviola44 on 24.05.16.
@@ -30,12 +31,14 @@ public class AddTrainingActivity extends AppCompatActivity {
     Training training;
     ListAdapter adapter;
 
+
     private int asking; //w zależnosci od tej zmiennej jesli bedziemy wybierac cwiczenia to
                         //bedziemy sie pytac o 1RM lub nie,
     private int complexSeries; //liczba serii dla cwiczen wielostawowych - jest rozna w zaleznosci od treningu
                                 //mozna by to odczytywac z klas treningu ale malo wydajne wydaje sie przesylanie
                                 //calej klasy zwlaszcza ze trzeba by implementowac jeszcze Parcelable
-
+    ArrayList<Integer> musclePartsId;
+    boolean isFBW;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,9 @@ public class AddTrainingActivity extends AppCompatActivity {
 
         training = getIntent().getParcelableExtra("training");
         asking = getIntent().getIntExtra("mode", ShowAllExercisesActivity.returnExAfterClickTAG);
-        complexSeries = getIntent().getIntExtra("complexSeries",4);
+        complexSeries = getIntent().getIntExtra("complexSeries", 4);
+        musclePartsId = getIntent().getIntegerArrayListExtra("muscleParts");
+        isFBW = getIntent().getBooleanExtra("isFBW", false);
 
         trainingNameTV.setText(training.getTrainingLabel());
         adapter = new ArrayAdapter<WorkoutExerciseInfo>(getApplicationContext(), android.R.layout.simple_list_item_1, training.getExercises());
@@ -59,11 +64,8 @@ public class AddTrainingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ShowAllExercisesActivity.class);
                 intent.putExtra("mode", asking);
-                ArrayList<Integer> musclesIds = new ArrayList<>();
-                for(int i=1; i<7; i++){
-                    musclesIds.add(i);
-                }
-                intent.putIntegerArrayListExtra("muscleIDs",musclesIds);
+                intent.putIntegerArrayListExtra("muscleIDs", musclePartsId);
+
                 startActivityForResult(intent, asking);
             }
         });

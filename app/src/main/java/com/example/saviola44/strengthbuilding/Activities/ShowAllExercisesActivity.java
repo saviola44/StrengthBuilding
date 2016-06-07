@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -35,14 +36,12 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
     ExpandableListAdapter listAdapter;
 
     List<Muscle> muscleParts;
-    List<String> PPLParts;
     HashMap<Long, List<ExerciseInfo>> exercises;
     List<ExerciseInfo> allExercises;
     public static final int returnExAfterClickTAG = 1;
     public static final int showExAfterClickTAG = 2;
     public static final int askMaxWeightAfterClickTAG = 3;
-    public static final int askAbout1RMandRepsTAG= 4;
-    //public static final int askAboutSeriesTAG =5;
+    public static final int askAboutSeriesTAG =4;
 
    /* public static final int displayFBWTAG = 1;
     public static final int displayPushTAG = 2;
@@ -89,7 +88,7 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if(clickMode == returnExAfterClickTAG) {
-                    Muscle m = muscleParts.get(groupPosition);
+                    Muscle m = musclePartsForLV.get(groupPosition);
                     ExerciseInfo e = exercises.get(m.getId()).get(childPosition);
                     Intent result = new Intent();
                     result.putExtra("exercise", e);
@@ -97,7 +96,15 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
                     finish();
                 }
                 else if (clickMode == askMaxWeightAfterClickTAG){
-                    Muscle m = muscleParts.get(groupPosition);
+                    Muscle m = musclePartsForLV.get(groupPosition);
+                    if (exercises == null) {
+                        Log.d("exercies", "ex jest nullem");
+                    }
+                    else{
+                        if(exercises.get(m.getId())==null){
+                            Log.d("exercies", "ex jest nullem to nastepne " + groupPosition + " " + childPosition);
+                        }
+                    }
                     selectedEx = exercises.get(m.getId()).get(childPosition);
                     if(selectedEx.isCompound()) {
                         GetNumberDialog dialog = new GetNumberDialog();
@@ -116,6 +123,7 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
                         dialog.show(getSupportFragmentManager(), "getNbTAG");
                     }
                 }
+
                 return false;
             }
         });

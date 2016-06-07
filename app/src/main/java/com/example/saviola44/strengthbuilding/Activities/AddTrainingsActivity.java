@@ -39,26 +39,28 @@ public class AddTrainingsActivity extends AppCompatActivity
         implements AddNewTrainingDialog.AddTrainingInterface {
     private AddNewTrainingDialog addNewTrainingDialog = new AddNewTrainingDialog();
 
-    List<Training> trainings;
+    List<Training> trainings = new ArrayList<>();
     AddedTrainingsAdapter adapter; //adapter dla ponizszej listy
     ListView trainingsLV; //wyswietla liste treningow
     TextView trainingMathodTV;
     TrainingMethod trainingMethod; //wybrana metoda treningowa - przesylana w intencji
     ImageView addTrainingIV; //przycisk dodawania treninfu w postaci obrazka
     ImageView doneTrainingIV;
+    TextView addTrainingTV;
     public static final String TRAINING_TAG = "metoda";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_trainings_activity_layout);
-        int TAG = getIntent().getIntExtra(TRAINING_TAG, 1);
-        setTrainingMethod(TAG);
         trainingsLV = (ListView) findViewById(R.id.trainingsLV);
         trainingMathodTV = (TextView) findViewById(R.id.trainingMethodTV);
         addTrainingIV = (ImageView) findViewById(R.id.addTrainigIV);
         doneTrainingIV = (ImageView) findViewById(R.id.doneTrainingIV);
+        addTrainingTV = (TextView) findViewById(R.id.addTraininglabel);
 
-        trainings = new ArrayList<>();
+        int TAG = getIntent().getIntExtra(TRAINING_TAG, 1);
+        setTrainingMethod(TAG);
+
         adapter = new AddedTrainingsAdapter(getApplicationContext(),
                 R.layout.added_trainings_row_layout, trainings);
         trainingsLV.setAdapter(adapter);
@@ -74,6 +76,8 @@ public class AddTrainingsActivity extends AppCompatActivity
                 intent.putExtra("training", t);
                 intent.putExtra("mode", trainingMethod.askAboutTAG());
                 intent.putExtra("complexSeries", trainingMethod.nbOfSeriesForStrengthEx());
+                intent.putIntegerArrayListExtra("muscleParts", getMuscleParts(position));
+                intent.putExtra("isFBW", getIsFBW());
                 startActivityForResult(intent, position);
             }
         });
@@ -141,6 +145,17 @@ public class AddTrainingsActivity extends AppCompatActivity
                 break;
             case Constants.StrengthPPL:
                 trainingMethod = new StrengthPPL();
+                Training push = new Training("Push", "Wykonujemy w tym niu ćwiczenia w których ciężar wypychamy od siebie" +
+                        " (klata, barki, triceps)");
+                Training pull = new Training("Pull", "Wykoonukemy w tym dniu ćwiczenia w ktorych ciężar przyciagamy do siebie " +
+                        "(Plecy, biceps)");
+                Training legs = new Training("Legs", "Mięśnie ud, pośladki, łydki");
+                trainings.add(push);
+                trainings.add(pull);
+                trainings.add(legs);
+                addTrainingIV.setVisibility(View.INVISIBLE);
+                addTrainingTV.setVisibility(View.INVISIBLE );
+
         }
     }
 
@@ -156,5 +171,37 @@ public class AddTrainingsActivity extends AppCompatActivity
             Training t = data.getParcelableExtra("training");
             trainings.set(requestCode, t);
         }
+    }
+
+    ArrayList<Integer> getMuscleParts(int position){
+        ArrayList<Integer> list = new ArrayList<>();
+        if(trainingMethod.getTrainingTag()==Constants.MassPPL || trainingMethod.getTrainingTag()==Constants.StrengthPPL){
+            list = new ArrayList<>();
+            if(position==0){
+                list.add(1);
+                list.add(5);
+                list.add(6);
+            }
+            else if(position==1){
+                list.add(3);
+                list.add(4);
+            }
+            else if(position==2) {
+                list.add(2);
+            }
+        }
+        else{
+            for(int i=1; i<7; i++){
+                list.add(i);
+            }
+        }
+        return list;
+    }
+    boolean getIsFBW(){
+        int t = trainingMethod.getTrainingTag();
+        if(t == Constants.MassFBW || t==Constants.StrengthFBW){
+            return true;
+        }
+        return false;
     }
 }
