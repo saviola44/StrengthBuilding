@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by saviola44 on 21.05.16.
+ * Created by Alicja on 21.05.16.
  */
 public class ExerciseDAO implements DAO<ExerciseInfo> {
     public static final String INSERT = "insert into " + ExercisesTable.TABLE_NAME

@@ -3,7 +3,7 @@ package com.example.saviola44.strengthbuilding.Database.Tables;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by saviola44 on 21.05.16.
+ * Created by Alicja on 21.05.16.
  */
 public class MuscleParts {
     public static final String TABLE_NAME = "muscle_parts";

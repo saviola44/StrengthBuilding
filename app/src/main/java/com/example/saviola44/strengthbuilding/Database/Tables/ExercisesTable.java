@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 /**
- * Created by saviola44 on 21.05.16.
+ * Created by Alicja on 21.05.16.
  */
 public class ExercisesTable {
     public static final String TABLE_NAME = "exercises";

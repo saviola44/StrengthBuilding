@@ -5,21 +5,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import android.util.Log;
 
 import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
 import com.example.saviola44.strengthbuilding.Database.Tables.ExHistTable;
-import com.example.saviola44.strengthbuilding.Database.Tables.ExercisesTable;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
-import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by saviola44 on 27.05.16.
+ * Created by Alicja on 27.05.16.
  */
 public class ExHistDAO implements DAO<List<WorkoutExercise>>{
     public static final String INSERT = "insert into " + ExHistTable.TABLE_NAME

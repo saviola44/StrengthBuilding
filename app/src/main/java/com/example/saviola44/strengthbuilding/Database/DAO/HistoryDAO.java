@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by saviola44 on 27.05.16.
+ * Created by Alicja on 27.05.16.
  */
 
 //tutaj zapisujemy samą date wykonanego treningu
