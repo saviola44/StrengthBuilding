@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.Training;
 
 /**
  * Created by saviola44 on 26.05.16.

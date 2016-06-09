@@ -1,6 +1,5 @@
-package com.example.saviola44.strengthbuilding;
+package com.example.saviola44.strengthbuilding.Model;
 
-import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
 import java.util.ArrayList;

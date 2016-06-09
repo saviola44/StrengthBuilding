@@ -1,11 +1,12 @@
 {
   "muscleparts" : {
-    "chest": 1,
-    "legs": 2,
-    "back": 3,
-    "biceps": 4,
-    "triceps": 5,
-    "arms": 6
+    "Klatka": 1,
+    "Nogi": 2,
+    "Plecy": 3,
+    "Biceps": 4,
+    "Triceps": 5,
+    "Barki": 6
+
   },
   "exercises" : [
     {

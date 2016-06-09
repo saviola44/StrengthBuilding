@@ -2,8 +2,8 @@ package com.example.saviola44.strengthbuilding.TrainingMethods;
 
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
-import com.example.saviola44.strengthbuilding.Training;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
+import com.example.saviola44.strengthbuilding.Model.Training;
+import com.example.saviola44.strengthbuilding.Model.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,7 @@ public abstract class PPL implements TrainingMethod {
         }
         return exerciseList;
     }
+    //szablon metody
     public abstract int getPumpExReps();
     public abstract int getStrengthExReps(int trainingNb);
     public abstract double getSeriesWeight(int trainingNb, int seriesNb, double max);

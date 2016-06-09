@@ -1,10 +1,7 @@
-package com.example.saviola44.strengthbuilding;
+package com.example.saviola44.strengthbuilding.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
-import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +14,6 @@ public class Training implements Parcelable{
     String trainingLabel;
     String trainingDescription;
     ArrayList<WorkoutExerciseInfo> exercises;
-   // ArrayList<Integer> exercisesSeries;
 
     public void setExercises(ArrayList<WorkoutExerciseInfo> exercises) {
         this.exercises = exercises;

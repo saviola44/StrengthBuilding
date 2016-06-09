@@ -1,16 +1,11 @@
 package com.example.saviola44.strengthbuilding.TrainingMethods;
 
-import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
-import com.example.saviola44.strengthbuilding.Activities.MainActivity;
 import com.example.saviola44.strengthbuilding.Activities.ShowAllExercisesActivity;
 import com.example.saviola44.strengthbuilding.Constants;
-import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
-import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.Training;
-import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
+import com.example.saviola44.strengthbuilding.Model.Training;
+import com.example.saviola44.strengthbuilding.Model.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;

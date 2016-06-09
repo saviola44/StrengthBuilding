@@ -9,10 +9,9 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 
 /**
  * Created by saviola44 on 25.05.16.

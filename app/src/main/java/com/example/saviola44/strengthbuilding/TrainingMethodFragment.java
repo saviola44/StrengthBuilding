@@ -3,20 +3,16 @@ package com.example.saviola44.strengthbuilding;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Switch;
-
+import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Activities.AddTrainingsActivity;
-import com.example.saviola44.strengthbuilding.Dialogs.GetMain1RMDialog;
 import com.example.saviola44.strengthbuilding.TrainingMethods.RussianPowerliftingTraining;
 
 import java.util.ArrayList;
@@ -71,7 +67,7 @@ public class TrainingMethodFragment extends Fragment{
                 trainingMethods = app.getMassTrainings();
                 break;
             case custom:
-                trainingMethods=app.getMassTrainings();
+                trainingMethods=new ArrayList<>();//app.getMassTrainings();
                 break;
         }
         ListAdapter adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, trainingMethods);
@@ -99,10 +95,12 @@ public class TrainingMethodFragment extends Fragment{
                             break;
                     }
                 }
-                else{
+                else if(current==mass){
                     switch (position) {
                         case 0: //Split
-                            goToAddTrainingActivity(Constants.Split);
+                           //goToAddTrainingActivity(Constants.Split);
+                            Toast.makeText(getActivity(), "Funkcjonalność jeszcze nie dodana", Toast.LENGTH_LONG).show();
+
                             break;
                         case 1: //FBW
                             goToAddTrainingActivity(Constants.MassFBW);

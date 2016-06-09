@@ -6,14 +6,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.Training;
 
 /**
  * Created by saviola44 on 28.05.16.

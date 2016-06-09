@@ -3,7 +3,6 @@ package com.example.saviola44.strengthbuilding.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +16,7 @@ import com.example.saviola44.strengthbuilding.Dialogs.AddNewTrainingDialog;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.RippetoeTraining;
@@ -27,7 +26,7 @@ import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthAnimalpakT
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthPPL;
 import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
+import com.example.saviola44.strengthbuilding.Model.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;

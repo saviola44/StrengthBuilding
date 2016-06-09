@@ -1,4 +1,4 @@
-package com.example.saviola44.strengthbuilding.Database;
+package com.example.saviola44.strengthbuilding.Database.DAO;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import com.example.saviola44.strengthbuilding.Database.StrengthBuilderOpenHelper;
 import com.example.saviola44.strengthbuilding.Database.Tables.MuscleParts;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
 

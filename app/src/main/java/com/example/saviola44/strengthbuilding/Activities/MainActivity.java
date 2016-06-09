@@ -14,21 +14,14 @@ import android.widget.Toast;
 import com.example.saviola44.strengthbuilding.Adapters.OptionAdapter;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
-import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
-import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
-import com.example.saviola44.strengthbuilding.Model.Muscle;
+import com.example.saviola44.strengthbuilding.Database.DAO.MusclePart;
 import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.ParseJSONExercises;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
 
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,8 +60,16 @@ public class MainActivity extends AppCompatActivity {
                         goToDoTrainingActivity();
                         break;
                     }
+                    case 4:{
+                        Toast.makeText(getApplicationContext(), "Funkcjonalność jeszcze nie dodana", Toast.LENGTH_LONG).show();
+                        break;
+                    }
                     case 5: {
                         goToShowExActivity();
+                        break;
+                    }
+                    case 6:{
+                        Toast.makeText(getApplicationContext(), "Funkcjonalność jeszcze nie dodana", Toast.LENGTH_LONG).show();
                         break;
                     }
                 }

@@ -1,7 +1,7 @@
 package com.example.saviola44.strengthbuilding.Model;
 
 /**
- * Created by saviola44 on 22.05.16.
+ * Created by Alicja on 22.04.16.
  */
 public class Muscle {
     long id;

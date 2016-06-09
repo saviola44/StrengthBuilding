@@ -1,12 +1,7 @@
 package com.example.saviola44.strengthbuilding.TrainingMethods;
 
-import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
 import com.example.saviola44.strengthbuilding.Activities.ShowAllExercisesActivity;
 import com.example.saviola44.strengthbuilding.Constants;
-import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
-
-import java.util.List;
 
 /**
  * Created by saviola44 on 24.05.16.
@@ -37,10 +32,6 @@ public class MassPPL extends PPL {
         return 3;
     }
 
-    @Override
-    public List<WorkoutExercise> getWorkoutExercises(TrainingPlan plan,int trainingNb) {
-        return null;
-    }
 
     @Override
     public int getPumpExReps() {
@@ -62,4 +53,6 @@ public class MassPPL extends PPL {
     public String toString() {
         return label;
     }
+
+
 }

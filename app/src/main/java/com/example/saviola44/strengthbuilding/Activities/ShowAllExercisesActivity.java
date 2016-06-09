@@ -11,7 +11,7 @@ import android.widget.ExpandableListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.ExpandableExercisesListAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
+import com.example.saviola44.strengthbuilding.Database.DAO.MusclePart;
 import com.example.saviola44.strengthbuilding.Dialogs.GetNumberDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
@@ -22,15 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by saviola44 on 22.05.16.
- * klasa ta działa tak
- * jesli w intencji przeslesz 1 to tylko w celach informacyjnych wyswietla ci cwiczenia
- * jesli w intencji przeslesz 2 to po kliknieciu zwraca ci cwiczenie spowrotem do aktywnosci
- * jesli w intencji przeslesz 3 to jesli cwiczenie zlozone to sie zapyta o 1RM i zwroci spowrotem
- * do aktywnosci cwiczenie
- *
- */
+
 public class ShowAllExercisesActivity extends AppCompatActivity implements GetNumberDialog.SetMaxWeightOrSeries{
     ExpandableListView expListView;
     ExpandableListAdapter listAdapter;

@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
+import com.example.saviola44.strengthbuilding.Database.DAO.MusclePart;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 
 import org.json.JSONArray;

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by saviola44 on 21.05.16.
+ * Created by Alicja on 21.04.16.
  */
 public class ExerciseInfo implements Parcelable {
     long id;

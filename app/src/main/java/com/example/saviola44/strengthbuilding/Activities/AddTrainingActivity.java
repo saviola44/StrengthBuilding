@@ -11,13 +11,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by saviola44 on 24.05.16.
@@ -66,8 +64,7 @@ public class AddTrainingActivity extends AppCompatActivity {
                 intent.putExtra("mode", asking);
                 intent.putIntegerArrayListExtra("muscleIDs", musclePartsId);
 
-                startActivityForResult(intent, asking);
-            }
+                startActivityForResult(intent, asking);}
         });
         doneAddExIV.setOnClickListener(new View.OnClickListener() {
             @Override

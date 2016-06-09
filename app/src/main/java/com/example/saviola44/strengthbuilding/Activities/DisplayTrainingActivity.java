@@ -1,8 +1,6 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -12,7 +10,7 @@ import android.widget.TextView;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 
 /**
  * Created by saviola44 on 27.05.16.

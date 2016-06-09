@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.saviola44.strengthbuilding.Model.Option;
 import com.example.saviola44.strengthbuilding.R;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 
 import java.util.List;
 

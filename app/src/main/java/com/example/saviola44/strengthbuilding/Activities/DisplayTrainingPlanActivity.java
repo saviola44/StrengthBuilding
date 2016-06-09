@@ -2,7 +2,6 @@ package com.example.saviola44.strengthbuilding.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,9 +11,8 @@ import android.widget.TextView;
 import com.example.saviola44.strengthbuilding.Adapters.AddedTrainingsAdapter;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.Training;
+import com.example.saviola44.strengthbuilding.Model.Training;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

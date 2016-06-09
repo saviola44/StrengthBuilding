@@ -1,12 +1,8 @@
 package com.example.saviola44.strengthbuilding.TrainingMethods;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.style.TtsSpan;
 
-import com.example.saviola44.strengthbuilding.Activities.AddTrainingActivity;
 import com.example.saviola44.strengthbuilding.Activities.ShowAllExercisesActivity;
 import com.example.saviola44.strengthbuilding.Constants;
 import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
@@ -16,8 +12,8 @@ import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.Training;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
+import com.example.saviola44.strengthbuilding.Model.Training;
+import com.example.saviola44.strengthbuilding.Model.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;

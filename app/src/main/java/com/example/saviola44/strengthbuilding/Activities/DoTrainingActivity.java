@@ -1,29 +1,19 @@
 package com.example.saviola44.strengthbuilding.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.DoTrainingAdapter;
-import com.example.saviola44.strengthbuilding.Database.DAO.DAO;
-import com.example.saviola44.strengthbuilding.Database.DAO.ExHistDAO;
-import com.example.saviola44.strengthbuilding.Database.DAO.HistoryDAO;
-import com.example.saviola44.strengthbuilding.Database.MusclePart;
 import com.example.saviola44.strengthbuilding.Dialogs.EditSeriesDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
-import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.R;
 import com.example.saviola44.strengthbuilding.StrengthBuilderApp;
-import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
-import com.example.saviola44.strengthbuilding.TrainingPlan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +72,9 @@ public class DoTrainingActivity extends AppCompatActivity implements EditSeriesD
         endTrainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO dao = new ExHistDAO(getApplicationContext());
-                dao.saveElement(exercises);
-                StrengthBuilderApp.getInstance(getApplicationContext()).finishCurrentTraining();
+//                DAO dao = new ExHistDAO(getApplicationContext());
+//                dao.saveElement(exercises);
+                StrengthBuilderApp.getInstance(getApplicationContext()).finishCurrentTraining(getApplicationContext(),exercises, doneEx);
                 finish();
             }
         });

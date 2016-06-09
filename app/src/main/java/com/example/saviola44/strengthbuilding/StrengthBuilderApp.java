@@ -3,11 +3,12 @@ package com.example.saviola44.strengthbuilding;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
+import com.example.saviola44.strengthbuilding.Model.Training;
+import com.example.saviola44.strengthbuilding.Model.TrainingPlan;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExercise;
 import com.example.saviola44.strengthbuilding.Model.WorkoutExerciseInfo;
 import com.example.saviola44.strengthbuilding.TrainingMethods.MassFBW;
@@ -18,7 +19,6 @@ import com.example.saviola44.strengthbuilding.TrainingMethods.Split;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthAnimalpakTraining;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthFBW;
 import com.example.saviola44.strengthbuilding.TrainingMethods.StrengthPPL;
-import com.example.saviola44.strengthbuilding.TrainingMethods.TrainingMethod;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,32 +27,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by saviola44 on 23.05.16.
- */
 public class StrengthBuilderApp {
     private static StrengthBuilderApp app = null;
     private List<String> strengthTrainings;
     private List<String> massTrainings;
     TrainingPlan plan;
     private int currentTraining; //ile zostalo juz zrobionych treningow danego planu treningowego
+
+    //konstruktor prywatny, tworzenie obiektu tylko za pomoca metody getInstance (singleton ograniczenie
+    // ilosci obiekótw tek klay do 1 intancji)
     private StrengthBuilderApp(){
 
     }
 
-    /*
-    do zapamietania
-    -currenttraining //shared prefs
-    -trziningplan
-            -getTrainingTAG id metody treningowej //shared prefs
-            -lista trenignow Training //DB id
-                -nazwa DB String
-                -opis DB String
-                -workoutexercisesinfo lista
-                    -ExerciseInfo exercise; //id
-                    int numberOfSeries;
-                     double maxWeight;
-     */
+
 
     public TrainingPlan getPlan() {
         return plan;
@@ -123,8 +111,15 @@ public class StrengthBuilderApp {
         return currentTraining;
     }
 
-    public void finishCurrentTraining() {
-        currentTraining++;
+    public void finishCurrentTraining(Context context, List<WorkoutExercise> exercises, List<Boolean> doneList) {
+        SaveTrainingAsyncTask task = new SaveTrainingAsyncTask(context,exercises,doneList);
+        task.execute();
+        for(int i=0; i<doneList.size(); i++){
+            if(doneList.get(i)){
+                currentTraining++;
+                break;
+            }
+        }
     }
 
     public void saveTrainingPlan(Context context){
