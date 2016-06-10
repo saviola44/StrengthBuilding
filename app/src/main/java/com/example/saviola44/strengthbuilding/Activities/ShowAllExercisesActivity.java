@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.example.saviola44.strengthbuilding.Adapters.ExpandableExercisesListAdapter;
 import com.example.saviola44.strengthbuilding.Database.DAO.ExerciseDAO;
 import com.example.saviola44.strengthbuilding.Database.DAO.MusclePart;
+import com.example.saviola44.strengthbuilding.Dialogs.AddNewExDialog;
 import com.example.saviola44.strengthbuilding.Dialogs.GetNumberDialog;
 import com.example.saviola44.strengthbuilding.Model.ExerciseInfo;
 import com.example.saviola44.strengthbuilding.Model.Muscle;
@@ -23,9 +25,10 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class ShowAllExercisesActivity extends AppCompatActivity implements GetNumberDialog.SetMaxWeightOrSeries{
+public class ShowAllExercisesActivity extends AppCompatActivity implements GetNumberDialog.SetMaxWeightOrSeries, AddNewExDialog.AddExercise{
     ExpandableListView expListView;
     ExpandableListAdapter listAdapter;
+    Button addExBtn;
 
     List<Muscle> muscleParts;
     HashMap<Long, List<ExerciseInfo>> exercises;
@@ -49,9 +52,14 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_all_exercises_layout);
         expListView = (ExpandableListView) findViewById(R.id.ExpLVdatabase);
+        addExBtn = (Button) findViewById(R.id.add_ex_button);
 
         clickMode = getIntent().getIntExtra("mode", showExAfterClickTAG); //domyslnie
         List<Integer> musclePartIDs = getIntent().getIntegerArrayListExtra("muscleIDs");
+
+        if(clickMode!=showExAfterClickTAG){
+            addExBtn.setVisibility(View.GONE);
+        }
 
         MusclePart musclePart = new MusclePart(getApplicationContext());
         muscleParts = musclePart.getAllMuscleParts();
@@ -73,7 +81,13 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
         createListView();
 
 
-
+        addExBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddNewExDialog dialog = new AddNewExDialog();
+                dialog.show(getSupportFragmentManager(), "AddEXDialog");
+            }
+        });
         listAdapter = new ExpandableExercisesListAdapter(getApplicationContext(), musclePartsForLV, exercises);
         expListView.setAdapter(listAdapter);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -158,5 +172,12 @@ public class ShowAllExercisesActivity extends AppCompatActivity implements GetNu
             }
 
         }
+    }
+
+    @Override
+    public void addExercise(ExerciseInfo e) {
+        allExercises.add(e);
+        List<ExerciseInfo> list = exercises.get(e.getMuscleParts());
+        list.add(e);
     }
 }

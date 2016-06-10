@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ex_name_label"
+            android:layout_alignParentTop="true"
+            android:text="Nazwa ćwiczenia"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/ex_name"
+            android:layout_below="@id/ex_name_label"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workedMuscleLabel"
+            android:layout_margin="5dp"
+            android:text="Cwiczona partia"
+            android:gravity="center"
+            android:layout_below="@id/ex_name"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/workedMuscleSpinner"
+            android:layout_margin="5dp"
+            android:layout_below="@id/workedMuscleLabel"></Spinner>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ex_type_label"
+            android:text="Typ ćwiczenia"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:layout_below="@id/workedMuscleSpinner"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ex_type_RG"
+            android:layout_below="@id/ex_type_label">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/compound"
+                android:checked="true"
+                android:text="wielostawowe"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/isolate"
+                android:text="izolowane"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+</ScrollView>

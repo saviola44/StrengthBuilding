@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:id="@+id/header"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
         <TextView
             android:layout_width="wrap_content"
@@ -25,10 +27,20 @@
             android:background="@color/header"/>
 
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_ex_button"
+        android:text="Dodaj ćwiczenie"
+        android:layout_alignParentBottom="true"
+        />
 
     <ExpandableListView
         android:id="@+id/ExpLVdatabase"
+        android:layout_below="@id/header"
+        android:layout_above="@id/add_ex_button"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryDark"/>
-</LinearLayout>
+
+</RelativeLayout>
