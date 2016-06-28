@@ -85,7 +85,7 @@ public class TrainingMethodFragment extends Fragment{
                             goToAddTrainingActivity(Constants.TrainingFromAnimalpak);
                             break;
                         case 2: //Rippetoe
-                            goToAddTrainingActivity(Constants.RippetoeTraining);
+                            Toast.makeText(getActivity(), "Funkcjonalnośc jeszcze nie dodana",Toast.LENGTH_LONG).show();
                             break;
                         case 3: //fbw na sile
                             goToAddTrainingActivity(Constants.StrengthFBW);
