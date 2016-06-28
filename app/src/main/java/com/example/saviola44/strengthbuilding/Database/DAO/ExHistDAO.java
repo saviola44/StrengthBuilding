@@ -16,7 +16,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by Alicja on 27.05.16.
+ * Created by saviola44 on 27.05.16.
  */
 public class ExHistDAO implements DAO<List<WorkoutExercise>>{
     public static final String INSERT = "insert into " + ExHistTable.TABLE_NAME

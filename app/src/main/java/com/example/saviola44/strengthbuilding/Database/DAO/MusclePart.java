@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Alicja on 21.05.16.
+ * Created by saviola44 on 21.05.16.
  */
 public class MusclePart  {
     public static final String INSERT = "insert into " + MuscleParts.TABLE_NAME
